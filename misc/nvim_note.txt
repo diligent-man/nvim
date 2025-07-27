@@ -1,0 +1,261 @@
+            API reference
+Interact with Nvim through Lua. The API have 3 layers:
+    1/ Vim API inherited Vim's
+        a/ Ex-commands
+        b/ builtin functions
+        c/ user-functions
+
+        => Accessed via
+            vim.cmd() for command
+            vim.fn for function
+        => See more at lua-guide-vimscript
+    
+    2/ Nvim API written in C for use in remote plugins & GUI
+        => Accessed via vim.api()
+        => See more at api and vim.api in lua-guide-api
+    
+    3/ Lua API written in and specificially for Lua.
+        => Accessed via vim.*
+        => See more at lua-stdlib
+
+The distinction in API layers is important, as API fns inherit behavior from original layer.
+    1/ Nvim API fns always require all args to be 
+specified even if Lua allows omitting args.
+    2/ Nvim API fns can use 0-based indexing instead of 1 in Lua
+---------------------------------------------------
+
+
+        Starup with Lua
+Nvim mutual exclusively uses init.vim or init.lua as an entrypoint of all configuration files.
+(Use :echo stdpath("config") to check config path)
+---------------------------------------------------
+
+
+        Script loading
+1/ Automatically load on startup
+    put in plugin/ in runtimepath.
+2/ Load on demand
+    put in <config_path>/lua/
+
+    => Should use pcall() to catch loading exception
+---------------------------------------------------
+
+
+                Vim tab page/ window/ buffer
+Tab page -> Window -> Buffer
+    1/ Tab page - A collection of windows. It is alternated by :tabN[ext], :tabp[revious]
+    2/ Window - A viewport on a buffer, can be arranged, transformed in the way we want.
+    3/ Buffer - An in-mem text of a file. Should be noted that not all buffers correspond to our physical file
+                (e.g. use interface, ...). It is alternated by :bn[ext], :bp[revious]
+
+
+Text editor working mechanism
+    Open file into tab -- close --> File closed + Remove all relevant info (undo history, state, unsaved changes, etc.)
+                       -- reopen -> Present with the same window on the file
+
+    => File <==> View on file
+
+
+Nvim working mechanism
+    Open file -- vim does --> loads file into memory as buffer
+                            + presents file into a single window (where we work)
+        => By using :vs or :sp, we open a NEW WINDOW for the SAME BUFFER on the SIMILAR TAB PAGE. Simple term,
+           2 view of 1 buffer/ file.
+
+    => This concept is also realized in pycharm, for example. Pychamr has split right/ down operations upon current file,
+       which would work in the similar fashion as above.
+----------------------------------------------------------
+
+
+            Vim commands
+1/ To run arbitrarily Vim command from Lua, pass it as a string to vim.cmd().
+
+2/ Special char need to be escaped or using lua-literal, which is delimited by [[ ]], and multiple vim commands can be passed at once.
+
+e.g.
+    a/ vim.cmd("colorscheme habamax")
+    b/ vim.cmd([[
+        highlight Error guibg=red
+        highlight link Warning Error
+    ]])
+---------------------------------------------------
+
+
+            Vim functions
+1/ Call Vimscript functions from Lua via vim.fn. Data types are automatically converted. This works for both built-in and user-defined functions.
+
+2/ "#" for calling autoload fn, which will be discussed later.
+
+e.g
+    a/ print(vim.fn.printf("Hello %s", "Lua"))
+    b/ local reversed_list = vim.fn.reverse({"a", "b"})
+---------------------------------------------------
+
+
+           Var Namespaces
+1/ Globa, predefined by Vim - v:
+2/ Global - g:
+3/ Local to Vim script source - s:
+4/ Local to function - l:
+5/ Function arg - v:
+6/ Local current buffer - b:
+7/ Local to current window - w:
+8/ Local to current tab page - t:
+----------------------------------------------------
+
+
+        Overview and, Global vs Local options
+1/ Options in Vim has three forms:
+    a/ boolean (toogleable)
+    b/ number
+    c/ string
+
+    Complete option reference is at: https://neovim.io/doc/user/options.html#global-local
+
+    All options can be:
+        a/ Reset to default, Vi default, Vim default, by adding &[vi, vim]
+        b/ Reset all to default, by :set all&
+        c/ Shown current value (string, number) or toogle (boolean), by :set {opt}
+        d/ Queried value
+
+
+2/ String options can be (Vimscript & Lua form provided):
+    a/ Set (also Number)
+        Vimscript
+            :se[t] {opt}:{val}
+            :se[t] {opt}={val}
+        Lua
+            o.{opt} = {val} or {{val}}
+
+    b/ Appended
+        Vimscript
+            :se[t] {opt}+={val}
+        Lua
+            o.{opt}:append({val})
+
+    c/ Prepended
+        Vimscript
+            :se[t] {opt}^={val}
+        Lua
+            o.{opt}:prepend({val})
+
+    d/ Remove (if string and not found, then no err or warning) (also Number)
+        Vimscript
+            :se[t] {opt}+={val}
+        Lua
+            o.{opt}:remove({val})
+
+
+3/ Options can be set
+    a/ locally & globally
+    b/ locally to window
+    c/ locally to buffer
+
+        Old interface  | New OOP-oriented interface | Vimscript
+           vim.o       |          vim.opt           |   :set
+           vim.lo      |       vim.opt_local        |   :setlocal
+           vim.go      |       vim.opt_global       |   :setglobal
+           vim.wo      |            --              |
+           vim.bo      |            --              |
+It's highly recommend to use new interface for configuring options. To retrieve value of new interface, we use vim.opt.<opt_name>:get()
+
+
+4/ Buffer-scoped option
+Syntax: vim.bo[buf_id], buf_index from 0
+
+It acts like :setlocal if buf_id is not specified. vim.bo only works with options that have "local to buffer".
+To globally set options, new buffer will has it own copy from global options.
+
+In addition, new buffer depends on "s"/ "S" flags in "cpoptions" option. If
+    a/ "s" is specified (default), values for new buffer are copied from the current active one when a buffer is FIRST entered.
+    b/ "S" is scpecified, values for new buffer are copied EACH TIME the buffer is entered.
+    c/ none is specified, options are copied from the currently active buffer when the buffer is created.
+
+Some useful apis:
+a/ nvim_buf_[get/set]_option(buf_id, "<opt>", value)
+    => run in cmd with "call" or vim.api in Lua
+
+    e.g
+        Run in cmd
+            call nvim_buf_set_option(0, 'textwidth', 80)
+            call nvim_buf_set_option(0, 'number', v:true)
+
+    => Using nvim_[set/get]_option_value() instead due to deprecation in 0.10
+
+b/ nvim_get_current_buf()
+
+
+5/ Window-scoped option
+Syntax: vim.wo[win_id][buf_id]
+
+It behaves the same as buffer-scoped options but with "local to window" options.
+
+Some usefule apis
+a/ nvim_win_[get/set]_option(win_id, buf_id, "<opt>", value)
+    => run in cmd with "call" or vim.api in Lua
+    => Using nvim_[set/get]_option_value() instead due to deprecation in 0.10 (same as buffer-scoped option)
+
+b/ nvim_get_current_win()
+---------------------------------------------------
+
+
+                        Autocommand
+I/ Definition
+    Autocommand (autocmd) is a single or series of commands that'll be fired/ triggered/ executed by specific events. For
+instance, BufReadPost (after reading a buffer), BufWritePre(before writing a buffer), FileType (when the filetype is detected),
+, or VimEnter (whn nvim starts). Here are some warns you should take into considerations.
+    a/ Autocmd feature is atmost powerful so it's a good idea to test it on an expendable copy of sthg.
+    b/ Be prepared for an error halfway through (e.g. disk full). You may have to clean up the changes to other files by hand.
+    c/ Be careful with I/O-related ops.
+
+
+II/ Vimscript syntax
+1/ :au[tocmd] [group] {event} {aupat} [++once] [++nested] {cmd}
+    => Add {cmd} to the list of cmd that Vim will exec automatically on {event} for a file matching {autopat}. Quote (')
+is seen as an arg to autocmd and won't start a command. New autocmd will append to the previous existing autocommands.
+
+Paras:
+    a/ group: A group of autocmds. This is useful for removing or executing multiple commands at once.
+    b/ event: A comma-separated list of event names.
+    c/ aupat: A a comma-separated list of patterns (e.g. file extensions)
+    d/ ++once: One-shot execution
+    e/ ++nested: Nesting a series of command
+    f/ cmd: command for Nvim to exec. However, we can pass a Lua-defined func as a callback to this.
+
+2/ Disabling autocmd
+    There're 2 ways:
+        a/ In a specific time, we use :eventignore but must be careful
+        b/ In an active win, :eventignorewin
+
+3/ Lua apis
+Ref: https://neovim.io/doc/user/api.html#api-autocmd
+    a/ nvim_create_augroup({name}, {opts}): Create or get an autocommand group
+    b/ nvim_create_autocmd({event}, {opts}): Creates an autocommand event handler, defined by callback (e.g. Lua fn, Vimscript fn str, or nvim cmd)
+
+    c/ nvim_get_autocmds({opts}): get matched opts autocmd
+    d/ nvim_exec_autocmds({event}, {opts}): Execute all autocommands for {event} that match the corresponding {opts}
+
+    e/ nvim_del_augroup_by_name({name}): Delete an autocommand group by name.
+    f/ nvim_del_autocmd({id}): Deletes an autocommand by id.
+    g/ nvim_clear_autocmds({opts}): Clears all autocommands selected by {opts}
+---------------------------------------------------
+
+                User-defined command
+
+    Nvim allows us to globally define new command via nvim_create_user_command api. In practice, we can have some usecases such as
+        a/ New cmd -> Overwrite with existing cmd -> Our desired effect
+        b/ New cmd -> Shortcut for excuting a series of cmds. Note that should be aware of nvim cmd and CLI cmd.
+
+Syntax
+    nvim_create_user_command({name}, {cmd}, {opts}), in which
+        a/ name: Name of usr-defined cmd. Must begin with uppercase char.
+        b/ cmd: can be string or Lua-defined fn
+            => check vim.api.keyset.create_user_command.command_args for Lua fn args
+        c/ opts: can be
+            1/ bool to :command-bang or :command-bar
+            2/ "complete" -> see https://neovim.io/doc/user/map.html#%3Acommand-complete
+            3/ Other parameters:
+                1.1/ desc: description string
+                1.2/ force: override any prev def
+                1.3/ preview: preview callback for :command-preview
+
