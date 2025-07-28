@@ -5,4 +5,5 @@ if LUA_PATH ~= nil then
 end
 
 
+require("plugin_manager")
 require("core")

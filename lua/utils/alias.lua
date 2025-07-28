@@ -1,14 +1,4 @@
-o = vim.opt  -- special option interface for OOP-oriented config in Lua
-lo = vim.opt_local  -- equi :setlocal
-go = vim.opt_global  -- equi :setglobal
-bo = vim.bo  -- equi :setlocal to current buffer
-wo = vim.wo  -- equi :setlocal to current window
-
-vicmd = vim.cmd
-vienv = vim.env
-
-
--- Nvim apis
+---------------------------------------------------- Nvim apis ---------------------------------------------------------
 api = vim.api
 cr_aucmd = api.nvim_create_autocmd
 cr_augroup = api.nvim_create_augroup
@@ -21,8 +11,36 @@ del_augr_by_name = api.nvim_del_augroup_by_name
 del_aucmd = api.nvim_del_autocmd
 cl_aucmds = api.nvim_clear_autocmds
 
+api_map = api.nvim_set_keymap
+api_buff_map = api.nvim_buf_set_keymap
+------------------------------------------------------------------------------------------------------------------------
 
--- Nvim fns
+
+
+--------------------------------------------------------- Nvim fns -----------------------------------------------------
 fn = vim.fn
 winwidth = fn.winwidth
 winheight = fn.winheight
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------- Lua APIs ------------------------------------------------------
+-- Misc
+vicmd = vim.cmd
+vienv = vim.env
+
+-- Keymap
+set_keymap = vim.keymap.set
+del_keymap = vim.keymap.del
+
+-- Options
+o = vim.opt  -- special option interface for OOP-oriented config in Lua
+lo = vim.opt_local  -- equi :setlocal
+go = vim.opt_global  -- equi :setglobal
+bo = vim.bo  -- equi :setlocal to current buffer
+wo = vim.wo  -- equi :setlocal to current window
+
+-- Var Namespaces
+g = vim.g
+------------------------------------------------------------------------------------------------------------------------

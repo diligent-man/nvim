@@ -298,6 +298,3 @@ There're 6 fold methods, including
     4/ syntax: defined by syntax highlighting
     5/ diff: folds for unchanged txt
     6/ marker: Markers are used to specify folds (not recommended for coding)
-
-
-

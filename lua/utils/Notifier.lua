@@ -5,6 +5,10 @@ local is_in = arr_ops.is_in
 local get_keys = dict_ops.get_keys
 
 
+---@class Notifier
+---@field __opts table
+---@field __level string
+---@field __log_levels string | table
 local Notifier = {
     __opts = {},
     __level = "WARN",
@@ -14,7 +18,7 @@ local Notifier = {
 Notifier.__index = Notifier
 
 
----@return table
+---@return Notifier
 function Notifier.new()
     local obj = setmetatable({}, Notifier)
     return obj

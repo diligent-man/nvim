@@ -133,10 +133,11 @@ cr_aucmd(
                     }
                 --]]
 
-                match_cond = {"^h[elp]* ?[a-zA-Z]*$", "^Help ?[a-zA-Z]*$"}
+                match_cond = {"^h(elp)* ?[a-zA-Z]*$", "^Help ?[a-zA-Z]*$"}
                 if inp_cmd:match(match_cond[1]) or inp_cmd:match(match_cond[2])
                 then
                     local help_topic = split(inp_cmd, " ")[1]
+                    print(inp_cmd)
                     open_help_next_tab(help_topic)
 
                     if inp_cmd:match(match_cond[2]) then

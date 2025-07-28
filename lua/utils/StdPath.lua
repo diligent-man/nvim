@@ -13,6 +13,9 @@ local os_name  = os_ops.os_name
 local get_vals = dict_ops.get_vals
 
 
+---@class StdPath
+---@field __notifier Notifier
+---@field __paths table[string]
 local StdPath = {
     __notifier = Notifier.new(),
 
@@ -24,6 +27,9 @@ local StdPath = {
 }
 
 
+---@field self self
+---@field key string
+---@return string
 StdPath.__index = function (self, key)
     ---@type table
     local _paths = getmetatable(self).__paths
@@ -55,7 +61,7 @@ StdPath.__index = function (self, key)
     end
 
 
----@return table
+---@return StdPath
 function StdPath.new()
     local obj = setmetatable({}, StdPath)
     return obj
