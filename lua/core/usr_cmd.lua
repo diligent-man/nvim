@@ -24,7 +24,6 @@ cr_usr_cmd(
 ------------------------------------------------------------------------------------------------------------------------
 
 
-
 cr_usr_cmd(
         "H",
         open_help_next_tab,
@@ -34,5 +33,3 @@ cr_usr_cmd(
             desc = 'Open help in a new tab' -- Description for the command
         }
 )
-
-

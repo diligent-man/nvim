@@ -2,37 +2,75 @@ require("utils.alias")
 
 -- Finding regex: \s\s\slocal to window\s\s.
 -- Use with Regular Expression Search in Chrome
--- fillchars "eob" = " "
+------------------------------------------------------------------------------------------------------------------------
+--- Long line wrapper ---
+wo.wrap = false  -- wrap long line
+wo.linebreak = false  -- how to break long line based on breakat opt
+------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------
+--- Folding ---
+wo.foldmethod = "indent"  -- one outa six fold methods
+wo.foldminlines = 3  -- # of min lines to form a fold
+wo.foldnestmax = 20  -- Max ford for "indent" and "syntax" method
+wo.foldlevel = 1  -- Fold higher than this level, fold will be closed
+wo.foldcolumn = "0"  -- When and how to draw the foldcolumn
+
+wo.foldmarker = "{{{,}}}"  -- Marks's start & end iff method is "marker"
+wo.foldexpr = "0"
+wo.foldenable = true
+wo.foldignore = "#"
+wo.foldtext = ""  -- Text to display for a closed fold.
+---------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Line number ---
+wo.number = true  -- display line num in left side bar
+wo.relativenumber = true  -- calculate relative lines to the current line. Usefule for nvim motion.
+wo.numberwidth = 6  -- same as pycharm
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Misc ---
+wo.fillchars = "eob: "
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Cursor ---
+wo.cursorline = true  -- hightlight selected line. Config via hl-CursorLine
+wo.cursorcolumn = false  -- highlight selected col.
+wo.cursorbind = false  -- move cursor to same pos in all windows. (should be manually turn on via map when needed)
+wo.cursorlineopt = "both"  -- Comma-separated list of opts for how 'cursorline' is displayed. Can be line | screenline | number | both.
+------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------
+--- Scrolling ---
+wo.scrolloff = 10  -- min screen lines to keep above & below the cursor
+wo.sidescrolloff = 2  -- min cols to scroll horizontally. Used when "wrap" if off
+---------------------------------------------------------------------------------------------------------------------------
+
+
 wo.arabic = false
-wo.number = true
+
 wo.breakindent = false
 wo.breakindentopt = ""
 wo.colorcolumn = ""
 wo.concealcursor = ""
 wo.conceallevel = 0
-wo.cursorbind = false
-wo.cursorcolumn = false
-wo.cursorline = true
-wo.cursorlineopt = "both"
+
 wo.diff = false
 wo.eventignorewin = ""
-wo.foldcolumn = "0"
-wo.foldenable = true
-wo.foldexpr = "0"
-wo.foldignore = "#"
-wo.foldlevel = 0
-wo.foldmarker = "{{{,}}}"
-wo.foldmethod = "manual"
-wo.foldminlines = 1
-wo.foldnestmax = 20
-wo.foldtext = "foldtext()"
+
 --wo.lhistory = 10
-wo.linebreak = false  -- break long line based on breakat opt
+
 wo.list = false
-wo.number = true
-wo.numberwidth = 4
+
 wo.previewwindow = false
-wo.relativenumber = false
 wo.rightleft = false
 --wo.rightleftcmd = "cmd"
 --wo.scroll -- left as default
@@ -46,4 +84,3 @@ wo.winfixbuf = false
 wo.winfixheight = false
 wo.winfixwidth = false
 wo.winhighlight = ""
-wo.wrap = true

@@ -1,10 +1,13 @@
 require("utils.alias")
 require("utils.vim_env")
+local utils = require("utils")
 
-local StdPath = require(".utils").StdPath
+
+local StdPath = utils.StdPath
+local make_title_str =  utils.make_title_str
+
 
 local std_path = StdPath.new()
-
 
 --[[
 Note:
@@ -19,26 +22,29 @@ Note:
 --[[
 o.chistory = 10
 o.completefuzzycollect = ""
-
+o.diffopt = "internal,filler,closeoff,inline:simple,linematch:40"
+o.fileformats = {Windows="dos,unix", Unix="unix,dos"}
 ]]
----------------------------------------------------------------------------------------------------------------------------
-
+------------------------------------------------------------------------------------------------------------------------
 
 
 ------------------------------------------------------------------------------------------------------------------------
 --- As default options ---
 --[[
 o.cdhome = false  -- if on, chdir to $HOME. Not affect in Unix
-o.breakat = " ^I!@*-+;:,./?"  -- char to break in long line
+
 o.cdpath = ",,"
 o.charconvert = ""  -- text encoding, usually used with external programme
 o.debug = ""
 o.delcombine = false  -- delete both base & accent. Useful for Latin, Cyrillic, etc.
 o.columns = 80  -- default 80 or term width
 o.encoding = "utf-8"
+o.emoji = true  -- emoji's width for displaying
+o.errorfile = "errors.err"
+o.exrc = false  -- enable project-based configuration for nvim
+o.fileencodings = "ucs-bom,utf-8,default,latin1"  -- list of prioritized text encoders
 ]]
 ------------------------------------------------------------------------------------------------------------------------
-
 
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -49,48 +55,38 @@ o.arabicshape = true
 o.casemap = "internal,keepascii"
 o.completeitemalign = "abbr,kind,menu"  -- item in popup menu
 o.cpoptions = "aABceFs_"  -- vi compatible options
-------------------------------------------------------------------------------------------------------------------------
-
-
-
-------------------------------------------------------------------------------------------------------------------------
---- File writing ---
-o.autowrite = false  -- auto write to buff. Renam buff with ":file {name}" to avoid unwanted effect.
-o.autowriteall = true  -- this same to autowrite but with higher precedence
+o.diffexpr = ""
 ------------------------------------------------------------------------------------------------------------------------
 
 
 ------------------------------------------------------------------------------------------------------------------------
---- UI ---
-o.background = "dark"
-o.equalalways = true  -- Split equal-sized windows
----------------------------------------------------------------------------------------------------------------------------
+--- Long line wrapper ---
+--o.display = "lastline"  -- The way text is displayed
+--o.breakat = " ^I!@*-+;:,./?"  -- char to break in long line
+------------------------------------------------------------------------------------------------------------------------
 
+
+------------------------------------------------------------------------------------------------------------------------
+--- GUI ---
+o.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
+o.guifont = ""
+o.guifontwide = ""
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Bell ---
+o.belloff = ""  -- which events the bell will not be rung
+o.visualbell = true  -- make screen flash instead of ringing bell in error event
+o.errorbells = true
+------------------------------------------------------------------------------------------------------------------------
 
 
 ------------------------------------------------------------------------------------------------------------------------
 --- Directory ---
 o.autochdir = false  -- auto change dir to opened/ switched/ deleted buff
 o.directory = std_path.state .. "/nvim/swap//"  -- list comma-separated dir for swap file
----------------------------------------------------------------------------------------------------------------------------
-
-
-
 ------------------------------------------------------------------------------------------------------------------------
---- Special keys ---
---[[
-    Backspace delete mechanism.
-        1/ indent: allows to remove space/ tab created by autoindent opt
-        2/ eol: allows to remove line by line (joint lines).
-        3/ start: solely allows to remove content newly created when entering insert mode.
-                  Set start is also means "nostop"
-            Del by word (Ctrl + w (default)) is also disabled
-            Del by line (Ctrl + u (default))      //
-        4/ nostop: still allows "Del by word" & "Del by line" though "start" is not included
--- ]]
-o.backspace = "indent,eol,start"
----------------------------------------------------------------------------------------------------------------------------
-
 
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -122,23 +118,58 @@ o.backupdir = std_path.data .. "/backup/"
 ------------------------------------------------------------------------------------------------------------------------
 
 
-
 ------------------------------------------------------------------------------------------------------------------------
---- Bell
-o.belloff = ""  -- which events the bell will not be rung
-o.visualbell = true  -- make screen flash instead of ringing bell in error event
-o.errorbells = true
+--- File writing ---
+o.autowrite = false  -- auto write to buff. Renam buff with ":file {name}" to avoid unwanted effect.
+o.autowriteall = true  -- this same to autowrite but with higher precedence
 ------------------------------------------------------------------------------------------------------------------------
 
 
+------------------------------------------------------------------------------------------------------------------------
+--- UI ---
+o.background = "dark"
+o.equalalways = true  -- Split equal-sized windows
+o.eadirection = "both"  -- when apply equal split
+o.showmode = false  -- mode display is relegated to status bar config
+
+--- Popup Win ---
+--o.winaltkeys = "menu"  -- Win32 only
+o.winborder = ""
+--o.window -- left as default
+o.winheight = 1
+o.winminheight = 1
+o.winminwidth = 1
+o.winwidth = 20
+
+--- Title string ---
+o.title = true
+o.titlestring = make_title_str()
+o.titlelen = 85
+o.titleold = ""  -- fallback of title string
+-----------------------------------------------------------------------------------------------------------------------
+
 
 ------------------------------------------------------------------------------------------------------------------------
---- Commandline mode
----
+--- Special keys ---
+--[[
+    Backspace delete mechanism.
+        1/ indent: allows to remove space/ tab created by autoindent opt
+        2/ eol: allows to remove line by line (joint lines).
+        3/ start: solely allows to remove content newly created when entering insert mode.
+                  Set start is also means "nostop"
+            Del by word (Ctrl + w (default)) is also disabled
+            Del by line (Ctrl + u (default))      //
+        4/ nostop: still allows "Del by word" & "Del by line" though "start" is not included
+-- ]]
+o.backspace = "indent,eol,start"
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Commandline mode ---
 o.cedit = "<C-h>"  -- History cmd-mode
 o.cmdwinheight = 5
 ------------------------------------------------------------------------------------------------------------------------
-
 
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -146,10 +177,83 @@ o.cmdwinheight = 5
 --o.helpheight = 50
 o.helplang = "en"
 o.helpfile = VIMRUNTIME .. "/doc/help.txt"
----------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 
+------------------------------------------------------------------------------------------------------------------------
+--- Digraph ---
+o.digraph = false  -- entering digraph with <BS>. Turn off due to the use of <C-k>
+------------------------------------------------------------------------------------------------------------------------
 
+
+------------------------------------------------------------------------------------------------------------------------
+--- Searching & Replacing ---
+o.gdefault = false  -- replace all instead of one
+o.inccommand = "split"  -- additionally display partial result off-screen
+o.incsearch = true
+
+-- Case insensitive ---
+o.ignorecase = false
+o.smartcase = false  --
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Autocmd ---
+o.eventignore = ""  -- list of auto commands to be ignored
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Folding ---
+o.foldclose = ""
+o.foldlevelstart = -1  -- -1: disabled <==> 0 | 0: all folds closed |1: some folds closed | 99: no fold closed
+o.foldopen = "block,hor,search,tag,undo"  -- types of command that fold will be opened
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Mouse ---
+--[[
+Usage:
+    1/ "n"
+        d + left click: delete to new cursor location
+        Drag status line to resize
+
+    2/ "v"
+        Double click: word-wise selection
+        Triple click: line-wise selection
+        Quaruple click: rectangular block-wise (not effect ?)
+
+    3/ scrolling: check scroll-mouse-wheel
+]]
+o.mouse = "nvic"  -- can be n|v|i|c|h|a|r
+o.mousefocus = false  -- should be off
+o.mousehide = true  -- hide mouse when typing
+o.mousemodel = "popup_setpos"  -- specifies right click ability. Can be define via map
+o.mousemoveevent = false  -- shoud be off for avoiding overhead
+o.mousescroll = "ver:3,hor:6"  -- scrolling lines. Can be disable by setting 0
+o.mousetime = 500  -- allowed max time for multiclick fn
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Win splitting ---
+o.splitright = true  -- new win is on the right for :vs cmd
+o.splitbelow = true  -- new win is below for :split cmd
+o.splitkeep = "cursor"  -- scroll behavior when opening/ closing/ resizing horizontal split
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Scrolling ---
+o.sidescroll = 1  -- min cols to scroll horizontally. Used when "wrap" if off. For smoothing scroll, this shoud < sidescrolloff (local 2 win opt)
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Misc ---
 --[[
     Intergrate Nvim's internal text registers with os's clipboard. Defined by a list of comma-separated clipboard. For
 example, when we yank (~ copy) or del text, it goes into nvim's internal registers, which is separated from os's clipboard.
@@ -164,47 +268,20 @@ This option acts as a bridge.
 --]]
 o.clipboard = "unnamed,unnamedplus"
 o.confirm = true  -- confirmation for unsaved changes
+------------------------------------------------------------------------------------------------------------------------
+
+
+o.fileignorecase = false  -- file to ignore when searching. Case-sensitive treating in *nix, and case-insensitive in Win
 
 
 
 
-
-
-
-
-
-o.diffexpr = ""
---o.diffopt = "internal,filler,closeoff,inline:simple,linematch:40"
-o.digraph = false
-
-o.display = "lastline"
-o.eadirection = "both"
-o.emoji = true
-
-
-o.errorfile = "errors.err"
-o.eventignore = ""
-o.exrc = false
-o.fileencodings = "ucs-bom,utf-8,default,latin1"
---o.fileformats = {Windows="dos,unix", Unix="unix,dos"}
-o.fileignorecase = false
-o.foldclose = ""
-o.foldlevelstart = -1
-o.foldopen = "block,hor,mark,percent,quickfix,search,tag,undo"
 o.fsync = true
-o.gdefault = false
-o.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
-o.guifont = ""
-o.guifontwide = ""
-
 o.hidden = true
 o.hi = 10000
 o.hlsearch = true
 o.icon = false
 o.iconstring = ""
-o.ignorecase = false
-o.inccommand = "nosplit"
-o.incsearch = true
 --o.isfname -- left as default
 --o.isident -- left as default
 o.isprint = "@,161-255"
@@ -233,13 +310,7 @@ o.modelineexpr = false
 o.modeline = true
 o.modelines = 5
 o.more = true
-o.mouse = "nvi"
-o.mousefocus = false
-o.mousehide = true
-o.mousemodel = "popup_setpos"
-o.mousemoveevent = false
-o.mousescroll = "ver:3,hor:6"
-o.mousetime = 500
+
 o.opfunc = ""
 --o.packpath  -- left as default
 o.paragraphs = "IPLPPPQPP TPHPLIPpLpItpplpipbp"
@@ -285,15 +356,14 @@ o.showcmd = true
 o.showcmdloc = "last"
 o.showfulltag = false
 o.showmatch = false
-o.showmode = true
+
 o.showtabline = 1
-o.sidescroll = 1
-o.smartcase = false
+
+
 o.smarttab = true
 o.spellsuggest = "best"
-o.splitbelow = false
-o.splitkeep = "cursor"
-o.splitright = false
+
+
 o.startofline = false
 o.suffixes = ".bak,~,.o,.h,.info,.swp,.obj"
 o.switchbuf = "uselast"
@@ -311,10 +381,6 @@ o.termsync = true
 o.tildeop = false
 o.timeout = true
 o.timeoutlen = 1000
-o.title = false
-o.titlelen = 85
-o.titleold = ""
-o.titlestring = ""
 o.ttimeout = true
 o.ttimeoutlen = 50
 o.undodir = std_path.state .. "/nvim/undo//"
@@ -334,13 +400,6 @@ o.wildignorecase = false
 o.wildmenu = true
 o.wildmode = "full"
 o.wildoptions = "pum,tagfile"
-o.winaltkeys = "menu"
-o.winborder = ""
---o.window -- left as default
-o.winheight = 1
-o.winminheight = 1
-o.winminwidth = 1
-o.winwidth = 20
 o.wrapscan = true
 o.write = true
 o.writeany = false

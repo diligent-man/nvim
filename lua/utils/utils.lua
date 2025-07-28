@@ -28,6 +28,24 @@ end
 
 
 ---@return string
+local function make_title_str()
+    ---@type table
+    sys_info = vim.uv.os_uname()
+
+    ---@type table
+    infra = {
+        vim.uv.os_gethostname(),
+        sys_info["sysname"],
+        sys_info["version"]:match("~([0-9a-zAZ].*-%a*)")
+    }
+
+    infra = string.format("%s (%s-%s)", infra[1], infra[2], infra[3])
+    abs_fname = vim.fn.expand("%:p")
+    return string.format("%s --- %s", infra, abs_fname)
+end
+
+
+---@return string
 local function get_curr_buf_fpath()
     return api.nvim_buf_get_name(0)
 end
@@ -48,6 +66,7 @@ end
 
 return {
     pairs_by_keys = pairs_by_keys,
+    make_title_str = make_title_str,
     get_curr_buf_fpath = get_curr_buf_fpath,
     open_help_next_tab = open_help_next_tab,
 }

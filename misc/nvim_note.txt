@@ -258,4 +258,46 @@ Syntax
                 1.1/ desc: description string
                 1.2/ force: override any prev def
                 1.3/ preview: preview callback for :command-preview
+------------------------------------------------------
+
+                 Digraph
+Ref:
+    1/ Doc
+        https://neovim.io/doc/user/digraph.html#digraphs
+    2/ Default digraph table
+        https://neovim.io/doc/user/digraph.html#digraph-table
+
+
+Digrahs are special chars  (usually Unicode encodings) that can't be entered from keyboard normally (e.g. ¶, ®, etc.).
+Digraph can be defined by 2 ways in Nvim:
+    a/ Decimal repr
+    b/ Hex code
+     => should not be defined with "_"
+
+Default digraph value range:
+    a/ 0x00 - 0xff
+    b/ 0000 - 3228
+    c/ FB00  - FB06
+
+Defining Syntax:
+    :digraph {char 1}{char 2}{number}
+
+Using Syntax:
+    1/ <C-k> {char 1} {char 2}
+    2/ {char 1} <BS> {char 2}
+        -> Affect iff digraph opt is set to true
+    3/ <C-k> <Space> <char>
+        -> Enter with the highest bit set.
+----------------------------------------------------------
+
+               Fold methods
+There're 6 fold methods, including
+    1/ manual: manually define how to fold
+    2/ indent: lines with equal indent form a fold
+    3/ expr: expr to fold
+    4/ syntax: defined by syntax highlighting
+    5/ diff: folds for unchanged txt
+    6/ marker: Markers are used to specify folds (not recommended for coding)
+
+
 

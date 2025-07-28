@@ -114,7 +114,8 @@ cr_aucmd(
         }
 )
 ------------------------------------------------------------------------------------------------------------------------
-
+--- Misc commands ---
+---------------------------------------------------------------------------------------------------------------------------
 
 cr_aucmd(
         {"CmdlineLeave"},
@@ -128,15 +129,19 @@ cr_aucmd(
                 --[[
                 Matches: {
                         h {topic}, help {topic},
-                        H {topic}, Help {topic}  --> left ERROR when run
+                        H {topic}, Help {topic}  --> prompt ERROR when run (fix later)
                     }
                 --]]
-                if inp_cmd:match("^h[elp]* ?[a-zA-Z]*$") or
-                    inp_cmd:match("^Help ?[a-zA-Z]*$")
+
+                match_cond = {"^h[elp]* ?[a-zA-Z]*$", "^Help ?[a-zA-Z]*$"}
+                if inp_cmd:match(match_cond[1]) or inp_cmd:match(match_cond[2])
                 then
                     local help_topic = split(inp_cmd, " ")[1]
                     open_help_next_tab(help_topic)
-                    notifier:notify("E492 for :H[elp] {topic} is currently in fix", "WARN")
+
+                    if inp_cmd:match(match_cond[2]) then
+                        notifier:notify("E492 for :Help {topic} is currently in fix", "WARN")
+                    end
                 end
             end
             }
