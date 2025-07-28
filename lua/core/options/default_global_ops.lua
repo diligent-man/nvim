@@ -248,7 +248,14 @@ o.splitkeep = "cursor"  -- scroll behavior when opening/ closing/ resizing horiz
 
 ------------------------------------------------------------------------------------------------------------------------
 --- Scrolling ---
-o.sidescroll = 1  -- min cols to scroll horizontally. Used when "wrap" if off. For smoothing scroll, this shoud < sidescrolloff (local 2 win opt)
+-- min cols to scroll horizontally. Used when "wrap" if off. Use "sidescrolloff" in local2window opt instead.
+-- For smoothing horizontal scroll, it should be 1
+o.sidescroll = 1
+
+-- min line to scroll vertically. Use "scrolloff" in local2window opt instead.
+-- For smoothing horizontal scroll, it should be 0
+o.scrolljump = 0
+o.scrollopt = "hor,ver,jump"  -- currently off (see local2window opt)
 ------------------------------------------------------------------------------------------------------------------------
 
 
@@ -272,8 +279,6 @@ o.confirm = true  -- confirmation for unsaved changes
 
 
 o.fileignorecase = false  -- file to ignore when searching. Case-sensitive treating in *nix, and case-insensitive in Win
-
-
 
 
 o.fsync = true
@@ -332,8 +337,7 @@ o.revins = false
 o.ruler = true
 o.rulerformat = ""
 --o.runtimepath -- left as default
-o.scrolljump = 1
-o.scrollopt = "ver,jump"
+
 o.sections = "SHNHH HUnhsh"
 o.selection = "inclusive"
 o.selectmode = ""

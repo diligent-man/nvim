@@ -2,6 +2,13 @@ require("utils.alias")
 
 -- Finding regex: \s\s\slocal to buffer\s\s.
 -- Use with Regular Expression Search in Chrome
+
+---------------------------------------------------------------------------------------------------------------------------
+--- Scrolling ---
+bo.scrollback = 10000  -- max lines kept beyond the visible screen & deleted if new lines exceed this limit. Only terminal buffer
+---------------------------------------------------------------------------------------------------------------------------
+
+
 bo.autoindent = true
 bo.binary = false
 bo.bomb = false
@@ -50,7 +57,7 @@ bo.omnifunc = ""
 bo.preserveindent = false
 bo.quoteescape = "\\"
 bo.readonly = false
-bo.scrollback = 10000
+
 bo.shiftwidth = 8
 bo.smartindent = false
 bo.softtabstop = 0

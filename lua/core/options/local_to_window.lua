@@ -1,5 +1,11 @@
 require("utils.alias")
 
+local utils = require("utils")
+
+local scrolloff = utils.get_scrolloff()
+local sidescrolloff = utils.get_sidescrolloff()
+
+
 -- Finding regex: \s\s\slocal to window\s\s.
 -- Use with Regular Expression Search in Chrome
 ------------------------------------------------------------------------------------------------------------------------
@@ -11,7 +17,7 @@ wo.linebreak = false  -- how to break long line based on breakat opt
 
 ---------------------------------------------------------------------------------------------------------------------------
 --- Folding ---
-wo.foldmethod = "indent"  -- one outa six fold methods
+wo.foldmethod = "manual"  -- one outa six fold methods
 wo.foldminlines = 3  -- # of min lines to form a fold
 wo.foldnestmax = 20  -- Max ford for "indent" and "syntax" method
 wo.foldlevel = 1  -- Fold higher than this level, fold will be closed
@@ -50,8 +56,11 @@ wo.cursorlineopt = "both"  -- Comma-separated list of opts for how 'cursorline' 
 
 ---------------------------------------------------------------------------------------------------------------------------
 --- Scrolling ---
-wo.scrolloff = 10  -- min screen lines to keep above & below the cursor
-wo.sidescrolloff = 2  -- min cols to scroll horizontally. Used when "wrap" if off
+wo.scrolloff =  scrolloff  -- min screen lines to keep above & below the cursor
+wo.sidescrolloff = sidescrolloff -- min cols to scroll horizontally. Used when "wrap" if off
+wo.scrollbind = false  -- same as cursorbind, but just scrolling. Interpreted by "scrollopt" in global_ops
+--wo.scroll = 15 -- left as default
+wo.smoothscroll = false  -- not use long line wrap so check later
 ---------------------------------------------------------------------------------------------------------------------------
 
 
@@ -73,10 +82,10 @@ wo.list = false
 wo.previewwindow = false
 wo.rightleft = false
 --wo.rightleftcmd = "cmd"
---wo.scroll -- left as default
-wo.scrollbind = false
+
+
+
 wo.signcolumn = "auto"
-wo.smoothscroll = false
 wo.spell = false
 wo.statuscolumn = ""
 wo.winblend = 0

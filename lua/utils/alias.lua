@@ -4,7 +4,6 @@ go = vim.opt_global  -- equi :setglobal
 bo = vim.bo  -- equi :setlocal to current buffer
 wo = vim.wo  -- equi :setlocal to current window
 
-fn = vim.fn
 vicmd = vim.cmd
 vienv = vim.env
 
@@ -22,3 +21,8 @@ del_augr_by_name = api.nvim_del_augroup_by_name
 del_aucmd = api.nvim_del_autocmd
 cl_aucmds = api.nvim_clear_autocmds
 
+
+-- Nvim fns
+fn = vim.fn
+winwidth = fn.winwidth
+winheight = fn.winheight
