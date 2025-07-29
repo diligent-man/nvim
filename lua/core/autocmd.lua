@@ -147,3 +147,32 @@ cr_aucmd(
             end
             }
         )
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Cursor line ---
+---------------------------------------------------------------------------------------------------------------------------
+cr_augroup("cursorline", {clear = true})
+
+cr_aucmd({ "WinEnter", "BufEnter"}, {
+    group = "cursorline",
+    desc = "Turn on cursorline when entering window/ buffer",
+    callback = function()
+        wo.cursorline = true
+        wo.cursorcolumn = true
+    end
+
+})
+
+cr_aucmd({"WinLeave", "BufLeave"}, {
+    group = "cursorline",
+    desc = "Turn off cursor line when leaving window/ buffer",
+    callback = function()
+        wo.cursorline = false
+        wo.cursorcolumn = false
+    end,
+})
+------------------------------------------------------------------------------------------------------------------------
+
+

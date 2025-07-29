@@ -44,5 +44,6 @@ require("lazy").setup({
 
 ------------------------------------------------------------------------------------------------------------------------
 --- Post-setup ---
+vicmd("syntax on")
 vicmd("syntax enable")
-vicmd("colorscheme dracula_pro_blade")
+vicmd("colorscheme dracula_pro_van_helsing_custom")

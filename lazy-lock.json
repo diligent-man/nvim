@@ -1,0 +1,4 @@
+{
+  "dracula-pro.nvim": { "branch": "main", "commit": "1ec4dba7a896e2a184fdd946db1d788f59b9042e" },
+  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" }
+}

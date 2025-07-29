@@ -131,6 +131,7 @@ o.background = "dark"
 o.equalalways = true  -- Split equal-sized windows
 o.eadirection = "both"  -- when apply equal split
 o.showmode = false  -- mode display is relegated to status bar config
+o.termguicolors = true  -- enables 24-bit RGB color instead of "cterm" attr in the TUI
 
 --- Popup Win ---
 --o.winaltkeys = "menu"  -- Win32 only
@@ -277,14 +278,15 @@ o.clipboard = "unnamed,unnamedplus"
 o.confirm = true  -- confirmation for unsaved changes
 ------------------------------------------------------------------------------------------------------------------------
 
-
 o.fileignorecase = false  -- file to ignore when searching. Case-sensitive treating in *nix, and case-insensitive in Win
+o.hlsearch = true  -- highlight all searched results
+
 
 
 o.fsync = true
 o.hidden = true
+
 o.hi = 10000
-o.hlsearch = true
 o.icon = false
 o.iconstring = ""
 --o.isfname -- left as default
@@ -379,7 +381,7 @@ o.taglength = 0
 o.tagrelative = true
 o.tagstack = true
 o.termbidi = false
-o.termguicolors = false
+
 o.termpastefilter = "BS,HT,ESC,DEL"
 o.termsync = true
 o.tildeop = false
