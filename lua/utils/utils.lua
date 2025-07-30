@@ -1,7 +1,28 @@
 require("utils.alias")
+require("utils.constant")
 
 
----@param inp_table table
+---@param leader string
+---@param new_leader_val string
+---@param new_local_leader_val string
+---@return void
+function set_leader(leader, new_leader_val, new_local_leader_val)
+    leader = leader or "<Space>"
+    new_leader_val = new_leader_val or " "
+    new_local_leader_val = new_local_leader_val or "\\"
+
+    -- reset mapleader
+    set_keymap("", leader, "<Nop>", DEFAULT_KEYMAP_OPTS)
+
+    -- set new val
+    g.mapleader = new_leader_val
+    g.maplocalleader = new_local_leader_val
+
+    _G["IS_LEADER_MAP"] = true
+end
+
+
+---@param t table
 ---@param fn function
 ---@return function
 local function pairs_by_keys(t, fn)
@@ -65,6 +86,7 @@ end
 
 
 return {
+    set_leader = set_leader,
     pairs_by_keys = pairs_by_keys,
     make_title_str = make_title_str,
     get_curr_buf_fpath = get_curr_buf_fpath,

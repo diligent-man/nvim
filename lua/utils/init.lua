@@ -16,6 +16,7 @@ return {
     StdPath = StdPath.StdPath,
     Notifier = Notifier.Notifier,
 
+    set_leader = utils.set_leader,
     pairs_by_keys = utils.pairs_by_keys,
     make_title_str = utils.make_title_str,
     get_curr_buf_fpath = utils.get_curr_buf_fpath,

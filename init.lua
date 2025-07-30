@@ -4,6 +4,8 @@ if LUA_PATH ~= nil then
     package.path = package.path .. ";" .. LUA_PATH
 end
 
+_G["IS_LEADER_MAP"] = false
 
-require("plugin_manager")
+
+require("utils.PluginManager")
 require("core")
