@@ -24,6 +24,13 @@ end
 
 
 ---@return void
+function PluginManager:pre_init()
+    g.loaded_netrw = 1
+    g.loaded_netrwPlugin = 1
+end
+
+
+---@return void
 function PluginManager:bootstrap()
     utils.set_leader("<Space>", " ", "\\")
 
@@ -79,5 +86,6 @@ end
 plugin_manager = PluginManager.new()
 
 plugin_manager:bootstrap()
+plugin_manager:pre_init()
 plugin_manager:run_setup()
 plugin_manager:post_init()

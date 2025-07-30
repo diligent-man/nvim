@@ -133,7 +133,7 @@ cr_aucmd(
                     }
                 --]]
 
-                match_cond = {"^h(elp)* ?[a-zA-Z]*$", "^Help ?[a-zA-Z]*$"}
+                match_cond = {"^h[elp]* ?[a-zA-Z]*$", "^Help ?[a-zA-Z]*$"}
                 if inp_cmd:match(match_cond[1]) or inp_cmd:match(match_cond[2])
                 then
                     local help_topic = split(inp_cmd, " ")[1]
@@ -162,7 +162,6 @@ cr_aucmd({ "WinEnter", "BufEnter"}, {
         wo.cursorline = true
         wo.cursorcolumn = true
     end
-
 })
 
 cr_aucmd({"WinLeave", "BufLeave"}, {

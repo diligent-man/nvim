@@ -56,7 +56,6 @@ local function get_keys(t, sep, fn, return_as)
         table.insert(res, key)
     end
 
-
     if return_as == "string" then
         local tmp_res = res
         res = "{"
