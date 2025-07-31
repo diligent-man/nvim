@@ -6,6 +6,7 @@ local function capitalize(first_chr, rest_str)
 end
 
 
+---@param inp string
 ---@param delim string
 ---@param start number
 ---@return table
@@ -25,6 +26,7 @@ local function split(inp, delim, start)
     table.insert(res, string.sub(inp, i))
     return res
 end
+
 
 return {
     split = split,

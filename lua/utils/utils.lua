@@ -2,11 +2,19 @@ require("utils.alias")
 require("utils.constant")
 
 
+---@type Notifier
+local Notifier = require("utils.Notifier").Notifier
+
+
+---@type Notifier
+local notifier = Notifier.new()
+
+
 ---@param leader string
 ---@param new_leader_val string
 ---@param new_local_leader_val string
 ---@return void
-function set_leader(leader, new_leader_val, new_local_leader_val)
+local function set_leader(leader, new_leader_val, new_local_leader_val)
     leader = leader or "<Space>"
     new_leader_val = new_leader_val or " "
     new_local_leader_val = new_local_leader_val or "\\"
@@ -19,32 +27,6 @@ function set_leader(leader, new_leader_val, new_local_leader_val)
     g.maplocalleader = new_local_leader_val
 
     _G["IS_LEADER_MAP"] = true
-end
-
-
----@param t table
----@param fn function
----@return function
-local function pairs_by_keys(t, fn)
-    local copied_t = {}
-
-    for e in pairs(t) do
-        table.insert(copied_t, e)
-    end
-
-    table.sort(copied_t, fn)
-    local i = 0
-
-    local iter = function ()
-        i = i + 1
-        if copied_t[i] == nil then
-            return nil
-        else
-            return copied_t[i], t[copied_t[i]]
-        end
-    end
-
-    return iter
 end
 
 
@@ -61,24 +43,25 @@ local function make_title_str()
     }
 
     infra = string.format("%s (%s-%s)", infra[1], infra[2], infra[3])
-    abs_fname = vim.fn.expand("%:p")
+    abs_fname = expand("%:p")
     return string.format("%s --- %s", infra, abs_fname)
 end
 
 
 ---@return string
 local function get_curr_buf_fpath()
-    return api.nvim_buf_get_name(0)
+    return nvim_buf_get_name(0)
 end
 
 
----@param args table
+---@param topic? string
 ---@return void
-local function open_help_next_tab(args)
-    local topic = ""
+local function open_help_next_tab(arg)
+    -- Priority: Nvim user-defined cmd called > Directly called
+    local topic = arg.args or arg or ""
 
-    if args and args.args then
-        topic = args.args
+    if topic:len() == 0 then
+       notifier:notify("Get empty topic for help redirect to help.txt", "WARN", {"open_help_next_tab"})
     end
 
     vicmd("tab help " .. topic)
@@ -90,5 +73,5 @@ return {
     pairs_by_keys = pairs_by_keys,
     make_title_str = make_title_str,
     get_curr_buf_fpath = get_curr_buf_fpath,
-    open_help_next_tab = open_help_next_tab,
+    open_help_next_tab = open_help_next_tab
 }

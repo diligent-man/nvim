@@ -1,16 +1,32 @@
-require(".utils.alias")
-
-local os_ops = require(".utils.os_ops")
-local arr_ops = require(".utils.arr_ops")
-local str_ops = require(".utils.str_ops")
-local dict_ops = require(".utils.dict_ops")
-
-local Notifier = require(".utils.Notifier").Notifier
+require("utils.alias")
 
 
+---@return Notifier
+local Notifier = require("utils.Notifier").Notifier
+
+---@return table
+local os_ops = require("utils.os_ops")
+
+---@return table
+local arr_ops = require("utils.arr_ops")
+
+---@return table
+local str_ops = require("utils.str_ops")
+
+---@return table
+local dict_ops = require("utils.dict_ops")
+
+
+---@return function
 local is_in = arr_ops.is_in
+
+---@return function
 local split = str_ops.split
+
+---@return function
 local os_name  = os_ops.os_name
+
+---@return function
 local get_vals = dict_ops.get_vals
 
 

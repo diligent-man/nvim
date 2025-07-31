@@ -1,6 +1,9 @@
-local utils = require(".utils.utils")
+---@type table
+local iterator = require("utils.iterator")
 
-local pairs_by_keys = utils.pairs_by_keys
+
+---@type function
+local pairs_by_keys = iterator.pairs_by_keys
 
 
 ---@param t table

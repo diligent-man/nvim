@@ -1,8 +1,16 @@
 require("utils.alias")
 require("utils.constant")
 
+
+---@type table
 local utils = require("utils")
-local StdPath = require("utils").StdPath
+
+---@type StdPath
+local StdPath = require("utils.StdPath").StdPath
+
+
+---@type function
+local set_leader = utils.set_leader
 
 
 ---@class PluginManager
@@ -32,7 +40,7 @@ end
 
 ---@return void
 function PluginManager:bootstrap()
-    utils.set_leader("<Space>", " ", "\\")
+    set_leader("<Space>", " ", "\\")
 
     if not (vim.uv or vim.loop).fs_stat(self.__lazy_path) then
         local out = fn.system(
@@ -82,6 +90,7 @@ function PluginManager:post_init()
 end
 
 
+-- Call PluginManager immediately when import due to bootstraping other plugins
 ---@type PluginManager
 plugin_manager = PluginManager.new()
 

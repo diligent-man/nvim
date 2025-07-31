@@ -1,7 +1,14 @@
+---@type table
 local arr_ops = require("utils.arr_ops")
+
+---@type table
 local dict_ops = require("utils.dict_ops")
 
+
+---@type function
 local is_in = arr_ops.is_in
+
+---@type function
 local get_keys = dict_ops.get_keys
 
 
@@ -50,4 +57,3 @@ end
 return {
     Notifier = Notifier
 }
-
