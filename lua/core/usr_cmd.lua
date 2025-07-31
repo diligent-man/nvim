@@ -1,10 +1,12 @@
 require("utils.alias")
 
+
+---@type table
 local utils = require("utils")
 
 
+---@type function
 local open_help_next_tab = utils.open_help_next_tab
-
 
 
 ------------------------------------------------------------------------------------------------------------------------

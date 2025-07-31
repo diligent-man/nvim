@@ -11,6 +11,7 @@ Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 Install-Module Terminal-Icons -Scope AllUsers
 Import-Module Terminal-Icons
 Install-Module WindowsConsoleFonts
+
 # Set-ConsoleFont $name
 # Set-TerminalIconsColorTheme -Name DevBlackOps   # After the above are setup, can add this to Profile to always load
 # Set-TerminalIconsTheme -IconTheme "JetBrainsMono"

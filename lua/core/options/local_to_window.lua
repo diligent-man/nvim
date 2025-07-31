@@ -1,8 +1,13 @@
 require("utils.alias")
 
+---@type table
 local utils = require("utils")
 
+
+---@type function
 local scrolloff = utils.get_scrolloff()
+
+---@type function
 local sidescrolloff = utils.get_sidescrolloff()
 
 

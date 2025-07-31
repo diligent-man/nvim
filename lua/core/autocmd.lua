@@ -1,15 +1,29 @@
 require("lfs")
+
 require("utils.alias")
 require("utils.constant")
 
+
+---@type table
 local utils = require("utils")
 
+---@type table
+local os_ops = require("utils.os_ops")
 
-local notifier = utils.Notifier.new()
+------@type Notifier
+local Notifier = require("utils.Notifier").Notifier
 
-local split = utils.split
-local os_sep = utils.os_sep
+
+---@type Notifier
+local notifier = Notifier.new()
+
+---@type function
+local os_sep = os_ops.os_sep
+
+---@type function
 local get_curr_buf_fpath = utils.get_curr_buf_fpath
+
+---@type function
 local open_help_next_tab = utils.open_help_next_tab
 
 
@@ -120,7 +134,7 @@ cr_aucmd(
 cr_aucmd(
         {"CmdlineLeave"},
         {
-            desc = "Trick to map :h and :help with usr-defined :H cmd",
+            desc = "Trick to map :h and :help with usr-defined :H cmd.",
 
             callback = function()
                 ---@type string
@@ -132,21 +146,39 @@ cr_aucmd(
                         H {topic}, Help {topic}  --> prompt ERROR when run (fix later)
                     }
                 --]]
+                ---@type boolean
+                local is_match = false
 
-                match_cond = {"^h[elp]* ?[a-zA-Z]*$", "^Help ?[a-zA-Z]*$"}
-                if inp_cmd:match(match_cond[1]) or inp_cmd:match(match_cond[2])
-                then
-                    local help_topic = split(inp_cmd, " ")[1]
-                    print(inp_cmd)
-                    open_help_next_tab(help_topic)
+                ---@type table
+                local re = {
+                  cmd_begin = ":*",  -- '*' for multi-matching
+                  sep = "%s*",
+                  help_topic = "[a-zA-Z%-%._]*"
+                }
 
-                    if inp_cmd:match(match_cond[2]) then
-                        notifier:notify("E492 for :Help {topic} is currently in fix", "WARN")
+                ---@type table
+                local cmd_variants = {"h[elp]*", "Help", "Hel", "He"}  -- shout not change this order
+
+                for i, variant in ipairs(cmd_variants) do
+                    local match_cond = string.format("^(%s%s)(%s)(%s)$", re.cmd_begin, variant, re.sep, re.help_topic)
+                    local _, _, topic = inp_cmd:match(match_cond)
+
+                    if topic ~= nil then
+                        if i > 1 then
+                            notifier:notify("E492 for :Help {topic} is currently in fix", "WARN")
+                        end
+
+                        open_help_next_tab(topic)
+                        is_match = true
+                    end
+
+                    if is_match then
+                        break
                     end
                 end
             end
-            }
-        )
+        }
+)
 
 
 
@@ -173,5 +205,14 @@ cr_aucmd({"WinLeave", "BufLeave"}, {
     end,
 })
 ------------------------------------------------------------------------------------------------------------------------
+--- plugins/tree ---
+---------------------------------------------------------------------------------------------------------------------------
 
-
+--vim.api.nvim_create_autocmd("BufEnter", {
+--  nested = true,
+--  callback = function()
+--    if #vim.api.nvim_list_wins() == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
+--      vim.cmd "quit"
+--    end
+--  end
+--})

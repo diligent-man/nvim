@@ -1,13 +1,19 @@
 require("utils.alias")
 require("utils.vim_env")
+
+---@type StdPath
+local StdPath = require("utils.StdPath").StdPath
+
+---@type string
 local utils = require("utils")
 
 
-local StdPath = utils.StdPath
+---@type StdPath
+local std_path = StdPath.new()
+
+---@type function
 local make_title_str =  utils.make_title_str
 
-
-local std_path = StdPath.new()
 
 --[[
 Note:
