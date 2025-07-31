@@ -1,5 +1,5 @@
 ---@type table
-local iterator = require("utils.iterator")
+local iterator = require("ext_lua.iterator")
 
 
 ---@type function
