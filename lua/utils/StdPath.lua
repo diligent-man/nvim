@@ -32,13 +32,13 @@ local get_vals = dict_ops.get_vals
 
 ---@class StdPath
 ---@field __notifier Notifier
----@field __paths table[string]
+---@field __paths table
 local StdPath = {
     __notifier = Notifier.new(),
 
     __paths = {
-        "config", "data", "run",
         "state", "cache", "log",
+        "config", "data", "run",
         "config_dirs", "data_dirs"
     }
 }
@@ -54,7 +54,7 @@ StdPath.__index = function (self, key)
     print()
 
     assert(is_in(_paths, key) == true,
-    string.format("Attr should be in %s. Get \"%s\" instead", get_vals(_paths, ", "), key)
+    string.format("Attr should be in %s. Get \"%s\" instead", get_vals(_paths, true, ", "), key)
     )
 
     if key == "config_dirs" or key == "data_dirs" then
@@ -74,7 +74,7 @@ StdPath.__index = function (self, key)
             key = split(key, "_")[1]
         end
     end
-    return fn.stdpath(key)
+    return stdpath(key)
     end
 
 

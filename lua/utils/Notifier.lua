@@ -19,7 +19,7 @@ local get_keys = dict_ops.get_keys
 local Notifier = {
     __opts = {},
     __level = "WARN",
-    __log_levels = get_keys(vim.log.levels, ", ", nil, "table")
+    __log_levels = get_keys(log.levels, true, ", ", "table")
 }
 
 Notifier.__index = Notifier
@@ -45,12 +45,12 @@ function Notifier:notify(msg, level, opts)
         level = level:upper()
         assert(is_in(self.__log_levels, level) == true,
                 string.format("Invalid level. Should be in %s",
-                        get_keys(vim.log.levels, ", ", nil, "string")
+                        get_keys(log.levels, true, ", ", "string")
                 )
         )
     end
 
-    vim.notify(string.format("%s: %s", level, msg), vim.log.levels[level], opts or self.__opts)
+    notify(string.format("%s: %s", level, msg), log.levels[level], opts or self.__opts)
 end
 
 

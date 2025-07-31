@@ -1,28 +1,23 @@
----@type table
-local iterator = require("ext_lua.iterator")
-
-
----@type function
-local pairs_by_keys = iterator.pairs_by_keys
-
-
 ---@param t table
+---@param val_type string
+---@param sort function
 ---@param sep string
----@param fn function
 ---@param return_as string
 ---@return table | string
-local function get_vals(t, sep, fn, return_as)
-    sep = sep or " "
-    return_as = return_as or "string"
+local function _get_dict(t, val_type, sort, sep, return_as)
+    assert(val_type == "key" or val_type == "value")
+    assert(sort == true or sort == false, "Invalid sort value")
     assert(return_as == "table" or return_as == "string", "Invalid return type")
 
     local res = {}
 
-    for _, val in pairs_by_keys(t, fn) do
-        table.insert(res, val)
+    for k, v in pairs(t) do
+        table.insert(res, val_type == "key" and k or v)
     end
 
-    table.sort(res)
+    if sort then
+        table.sort(res)
+    end
 
     if return_as == "string" then
         local tmp_res = res
@@ -44,37 +39,30 @@ end
 
 
 ---@param t table
+---@param sort function
 ---@param sep string
----@param fn function
 ---@param return_as string
 ---@return table | string
-local function get_keys(t, sep, fn, return_as)
+local function get_vals(t, sort, sep, return_as)
+    sort = sort or false
     sep = sep or " "
-    return_as = return_as or "string"
-    assert(return_as == "table" or return_as == "string", "Invalid return type")
+    return_as = return_as or "table"
 
-    local res = {}
+    return _get_dict(t, "value", sort, sep, return_as)
+end
 
-    for key, _ in pairs_by_keys(t, fn) do
-        table.insert(res, key)
-    end
 
-    if return_as == "string" then
-        local tmp_res = res
-        res = "{"
+---@param t table
+---@param sort function
+---@param sep string
+---@param return_as string
+---@return table | string
+local function get_keys(t, sort, sep, return_as)
+    sort = sort or false
+    sep = sep or " "
+    return_as = return_as or "table"
 
-        for i, key in ipairs(tmp_res) do
-            if i == 1 then
-                res = res .. key
-            else
-                res = res .. sep .. key
-            end
-        end
-
-        res = res .. "}"
-    end
-
-    return res
+    return _get_dict(t, "key", sort, sep, return_as)
 end
 
 

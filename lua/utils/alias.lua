@@ -34,6 +34,8 @@ winheight = fn.winheight
 getbufinfo = fn.getbufinfo
 
 expand = fn.expand
+stdpath = fn.stdpath
+
 ------------------------------------------------------------------------------------------------------------------------
 
 
@@ -42,10 +44,14 @@ expand = fn.expand
 -- Misc
 vicmd = vim.cmd
 vienv = vim.env
-uv = vim.uv -- libUV library
+
+log = vim.log
+notify = vim.notify
 
 schedule = vim.schedule
 schedule_wrap = vim.schedule_wrap
+
+uv = vim.uv -- libUV library
 
 
 -- Var Namespaces
