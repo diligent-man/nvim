@@ -1,1 +1,1 @@
-# This is a repo for my nvim configurations
+# This package aims to extend some functionalites for Lua by adopting Lua APIs provided by Neo Vim (NVim). Due to this reason, we are going to need some aliases from [here](../utils/alias.lua) and this package should not be separated from NVim environment.  

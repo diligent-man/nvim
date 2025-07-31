@@ -49,7 +49,6 @@ local function rstrip(str)
 end
 
 
-
 ---@param inp string
 ---@param delim string
 ---@param start number

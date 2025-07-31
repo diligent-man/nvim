@@ -77,11 +77,24 @@ tbl_map = vim.tbl_map
 tbl_values = vim.tbl_values
 tbl_keys = vim.tbl_keys
 
-tbl_filter = vim.tbl_filter  -- same Python's filter()
-tbl_isempty = vim.tbl_isempty  -- same Python's map()
+filter = vim.tbl_filter
+map = vim.tbl_map
+count =  vim.tbl_count
+
+tbl_contains = vim.tbl_contains
+tbl_isempty = vim.tbl_isempty
+
+extend = vim.tbl_extend
+deep_extend = vim.tbl_deep_extend
 
 
 -- libUV
 os_uname = uv.os_uname
 os_gethostname = uv.os_gethostname
+
+-- String ops
+trim = vim.trim
+
+-- JSON
+json = vim.json
 ------------------------------------------------------------------------------------------------------------------------
