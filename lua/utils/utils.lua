@@ -50,7 +50,7 @@ end
 
 ---@return string
 local function get_curr_buf_fpath()
-    return nvim_buf_get_name(0)
+    return buf_get_name(0)
 end
 
 

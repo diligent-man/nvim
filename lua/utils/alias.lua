@@ -15,12 +15,16 @@ api_map = api.nvim_set_keymap  -- use set_keymap instead
 api_buff_map = api.nvim_buf_set_keymap  -- use set_keymap instead
 
 
-nvim_win_close = api.nvim_win_close
-nvim_list_wins = api.nvim_list_wins
-nvim_win_get_buf = api.nvim_win_get_buf
-nvim_win_get_tabpage = api.nvim_win_get_tabpage
+list_wins = api.nvim_list_wins
+win_close = api.nvim_win_close
+win_get_buf = api.nvim_win_get_buf
+win_get_tabpage = api.nvim_win_get_tabpage
 
-nvim_tabpage_list_wins = api.nvim_tabpage_list_wins
+buf_get_name = api.nvim_buf_get_name
+
+tabpage_list_wins = api.nvim_tabpage_list_wins
+
+set_hl = api.nvim_set_hl
 ------------------------------------------------------------------------------------------------------------------------
 
 
@@ -81,8 +85,8 @@ filter = vim.tbl_filter
 map = vim.tbl_map
 count =  vim.tbl_count
 
-tbl_contains = vim.tbl_contains
-tbl_isempty = vim.tbl_isempty
+contains = vim.tbl_contains
+isempty = vim.tbl_isempty
 
 extend = vim.tbl_extend
 deep_extend = vim.tbl_deep_extend
