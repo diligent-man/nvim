@@ -54,7 +54,7 @@ StdPath.__index = function (self, key)
     print()
 
     assert(is_in(_paths, key) == true,
-    string.format("Attr should be in %s. Get \"%s\" instead", get_vals(_paths, true, ", "), key)
+    string.format("Attr should be in %s. Get \"%s\" instead", get_vals(_paths, true, "string"), key)
     )
 
     if key == "config_dirs" or key == "data_dirs" then

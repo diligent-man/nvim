@@ -7,5 +7,6 @@ source = {
 }
 
 dependencies = {
-  "luafilesystem == 1.8.0"
+  "luafilesystem == 1.8.0",
+  "json4lua == 0.9.30-1"
 }

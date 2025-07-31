@@ -19,7 +19,7 @@ local get_keys = dict_ops.get_keys
 local Notifier = {
     __opts = {},
     __level = "WARN",
-    __log_levels = get_keys(log.levels, true, ", ", "table")
+    __log_levels = get_keys(log.levels, true)
 }
 
 Notifier.__index = Notifier
@@ -45,7 +45,7 @@ function Notifier:notify(msg, level, opts)
         level = level:upper()
         assert(is_in(self.__log_levels, level) == true,
                 string.format("Invalid level. Should be in %s",
-                        get_keys(log.levels, true, ", ", "string")
+                        get_keys(log.levels, true, "string")
                 )
         )
     end

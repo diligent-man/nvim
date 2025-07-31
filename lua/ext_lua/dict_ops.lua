@@ -1,10 +1,12 @@
+require("json")
+
+
 ---@param t table
 ---@param val_type string
 ---@param sort function
----@param sep string
 ---@param return_as string
 ---@return table | string
-local function _get_dict(t, val_type, sort, sep, return_as)
+local function _get_dict(t, val_type, sort, return_as)
     assert(val_type == "key" or val_type == "value")
     assert(sort == true or sort == false, "Invalid sort value")
     assert(return_as == "table" or return_as == "string", "Invalid return type")
@@ -15,24 +17,8 @@ local function _get_dict(t, val_type, sort, sep, return_as)
         table.insert(res, val_type == "key" and k or v)
     end
 
-    if sort then
-        table.sort(res)
-    end
-
-    if return_as == "string" then
-        local tmp_res = res
-        res = "{"
-
-        for i, val in ipairs(tmp_res) do
-            if i == 1 then
-                res = res .. val
-            else
-                res = res .. sep .. val
-            end
-        end
-
-        res = res .. "}"
-    end
+    res = sort == true and table.sort(res) or res
+    res = return_as == "string" and json.encode(res) or res
 
     return res
 end
@@ -40,29 +26,25 @@ end
 
 ---@param t table
 ---@param sort function
----@param sep string
 ---@param return_as string
 ---@return table | string
-local function get_vals(t, sort, sep, return_as)
+local function get_vals(t, sort, return_as)
     sort = sort or false
-    sep = sep or " "
     return_as = return_as or "table"
 
-    return _get_dict(t, "value", sort, sep, return_as)
+    return _get_dict(t, "value", sort, return_as)
 end
 
 
 ---@param t table
 ---@param sort function
----@param sep string
 ---@param return_as string
 ---@return table | string
-local function get_keys(t, sort, sep, return_as)
+local function get_keys(t, sort, return_as)
     sort = sort or false
-    sep = sep or " "
     return_as = return_as or "table"
 
-    return _get_dict(t, "key", sort, sep, return_as)
+    return _get_dict(t, "key", sort, return_as)
 end
 
 

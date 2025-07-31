@@ -73,6 +73,10 @@ wo = vim.wo  -- equi :setlocal to current window
 
 -- Table
 tbl_map = vim.tbl_map
+
+tbl_values = vim.tbl_values
+tbl_keys = vim.tbl_keys
+
 tbl_filter = vim.tbl_filter  -- same Python's filter()
 tbl_isempty = vim.tbl_isempty  -- same Python's map()
 
