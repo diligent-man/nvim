@@ -88,22 +88,25 @@ function PluginManager:post_init()
     vicmd("syntax enable")
     vicmd("colorscheme dracula_pro_van_helsing_custom")
 
-
-
+    --------------------------------------------------------------------------------------------------------------------
+    --- NVim Tree ---
     set_hl(0, "NvimTreeNormal", {bg="#2B2D30"})
+    set_hl(0, "NvimTreeRootFolder", {italic=true, bold=true, fg="#00FFFF"})
 
-    set_hl(0, "NvimTreeOpenedHL", {fg = "#FFFFFF", bg = "#0B94FC"})
+    set_hl(0, "NvimTreeOpenedHL", {fg = "#FFFFFF", bg = "#0B94FC", bold=true})
 
-    vim.cmd(":hi NvimTreeSymlink gui=italic")  -- can't not set via api. Why ?
-    set_hl(0, "NvimTreeSymlinkFolderName", {fg="#9580F9"})
+
+    set_hl(0, "NvimTreeSymlink", {italic=true})
+    set_hl(0, "NvimTreeSymlinkFolderName", {fg="#9580F9", italic=true})
 
     set_hl(0, "NvimTreeFolderName", {fg="#02AEFF"})
     set_hl(0, "NvimTreeEmptyFolderName", {fg="#02AEFF"})
 
     set_hl(0, "NvimTreeGitFolderStagedHL", {fg = "#00FF00"})
     set_hl(0, "NvimTreeGitFileStagedHL", {fg = "#00FF00"})
+    --------------------------------------------------------------------------------------------------------------------
 
-    set_hl(0, "NvimTreeGitFolderDeletedHL", {fg = "#FF0000"})
+
 end
 
 
