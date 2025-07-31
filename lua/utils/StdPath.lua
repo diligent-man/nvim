@@ -5,16 +5,16 @@ require("utils.alias")
 local Notifier = require("utils.Notifier").Notifier
 
 ---@return table
-local os_ops = require("utils.os_ops")
+local os_ops = require("ext_lua.os_ops")
 
 ---@return table
-local arr_ops = require("utils.arr_ops")
+local arr_ops = require("ext_lua.arr_ops")
 
 ---@return table
-local str_ops = require("utils.str_ops")
+local str_ops = require("ext_lua.str_ops")
 
 ---@return table
-local dict_ops = require("utils.dict_ops")
+local dict_ops = require("ext_lua.dict_ops")
 
 
 ---@return function

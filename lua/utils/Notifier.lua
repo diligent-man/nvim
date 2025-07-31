@@ -1,8 +1,8 @@
 ---@type table
-local arr_ops = require("utils.arr_ops")
+local arr_ops = require("ext_lua.arr_ops")
 
 ---@type table
-local dict_ops = require("utils.dict_ops")
+local dict_ops = require("ext_lua.dict_ops")
 
 
 ---@type function

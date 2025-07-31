@@ -1,9 +1,12 @@
 return {
     "folke/which-key.nvim",
+
     version = "v3.17.0",
     pin = true,
 
+    dependencies = {"echasnovski/mini.icons", version = "*"},
     event = "VeryLazy",
+
     opts = {
         -- your configuration comes here
         -- or leave it empty to use the default settings

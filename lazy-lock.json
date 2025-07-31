@@ -5,6 +5,7 @@
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lualine.nvim": { "branch": "master", "commit": "a94fc68960665e54408fe37dcf573193c4ce82c9" },
   "mason.nvim": { "branch": "main", "commit": "197f6352c276bbc2d25541dfce00ec50d1a4e88f" },
+  "mini.icons": { "branch": "main", "commit": "397ed3807e96b59709ef3292f0a3e253d5c1dc0a" },
   "nvim-autopairs": { "branch": "master", "commit": "23320e75953ac82e559c610bec5a90d9c6dfa743" },
   "nvim-lspconfig": { "branch": "master", "commit": "3db16ceeea947517f0dc1404c24dcb5ab0c91d26" },
   "nvim-tree.lua": { "branch": "master", "commit": "6b5b36659688767fb9f133bb83024ab1466fe5cd" },

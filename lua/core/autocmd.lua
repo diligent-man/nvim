@@ -8,7 +8,7 @@ require("utils.constant")
 local utils = require("utils")
 
 ---@type table
-local os_ops = require("utils.os_ops")
+local os_ops = require("ext_lua.os_ops")
 
 ------@type Notifier
 local Notifier = require("utils.Notifier").Notifier
