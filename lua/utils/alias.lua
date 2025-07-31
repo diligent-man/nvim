@@ -42,16 +42,20 @@ expand = fn.expand
 -- Misc
 vicmd = vim.cmd
 vienv = vim.env
+uv = vim.uv -- libUV library
 
 schedule = vim.schedule
 schedule_wrap = vim.schedule_wrap
 
+
 -- Var Namespaces
 g = vim.g
+
 
 -- Keymap
 set_keymap = vim.keymap.set
 del_keymap = vim.keymap.del
+
 
 -- Options
 o = vim.opt  -- special option interface for OOP-oriented config in Lua
@@ -61,10 +65,13 @@ bo = vim.bo  -- equi :setlocal to current buffer
 wo = vim.wo  -- equi :setlocal to current window
 
 
-
-
--- Table's apis
+-- Table
 tbl_map = vim.tbl_map
 tbl_filter = vim.tbl_filter  -- same Python's filter()
 tbl_isempty = vim.tbl_isempty  -- same Python's map()
+
+
+-- libUV
+os_uname = uv.os_uname
+os_gethostname = uv.os_gethostname
 ------------------------------------------------------------------------------------------------------------------------

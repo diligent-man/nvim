@@ -33,11 +33,11 @@ end
 ---@return string
 local function make_title_str()
     ---@type table
-    sys_info = vim.uv.os_uname()
+    sys_info = os_uname()
 
     ---@type table
     infra = {
-        vim.uv.os_gethostname(),
+        os_gethostname(),
         sys_info["sysname"],
         sys_info["version"]:match("~([0-9a-zAZ].*-%a*)")
     }
@@ -54,7 +54,7 @@ local function get_curr_buf_fpath()
 end
 
 
----@param topic? string
+---@param arg string
 ---@return void
 local function open_help_next_tab(arg)
     -- Priority: Nvim user-defined cmd called > Directly called
@@ -70,7 +70,6 @@ end
 
 return {
     set_leader = set_leader,
-    pairs_by_keys = pairs_by_keys,
     make_title_str = make_title_str,
     get_curr_buf_fpath = get_curr_buf_fpath,
     open_help_next_tab = open_help_next_tab
