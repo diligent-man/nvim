@@ -238,7 +238,7 @@ Usage:
 o.mouse = "nvic"  -- can be n|v|i|c|h|a|r
 o.mousefocus = false  -- should be off
 o.mousehide = true  -- hide mouse when typing
-o.mousemodel = "popup_setpos"  -- specifies right click ability. Can be define via map
+o.mousemodel = "popup_setpos"  -- specifies right click ability. Can be define via keymap
 o.mousemoveevent = false  -- shoud be off for avoiding overhead
 o.mousescroll = "ver:3,hor:6"  -- scrolling lines. Can be disable by setting 0
 o.mousetime = 500  -- allowed max time for multiclick fn

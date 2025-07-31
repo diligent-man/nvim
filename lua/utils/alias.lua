@@ -63,8 +63,8 @@ g = vim.g
 
 
 -- Keymap
-set_keymap = vim.keymap.set
-del_keymap = vim.keymap.del
+keymap = vim.keymap.set
+del_map = vim.keymap.del
 
 
 -- Options

@@ -20,7 +20,7 @@ local function set_leader(leader, new_leader_val, new_local_leader_val)
     new_local_leader_val = new_local_leader_val or "\\"
 
     -- reset mapleader
-    set_keymap("", leader, "<Nop>", DEFAULT_KEYMAP_OPTS)
+    keymap("", leader, "<Nop>", DEFAULT_KEYMAP_OPTS)
 
     -- set new val
     g.mapleader = new_leader_val

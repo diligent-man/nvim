@@ -95,7 +95,6 @@ function PluginManager:post_init()
 
     set_hl(0, "NvimTreeOpenedHL", {fg = "#FFFFFF", bg = "#0B94FC", bold=true})
 
-
     set_hl(0, "NvimTreeSymlink", {italic=true})
     set_hl(0, "NvimTreeSymlinkFolderName", {fg="#9580F9", italic=true})
 
@@ -105,8 +104,6 @@ function PluginManager:post_init()
     set_hl(0, "NvimTreeGitFolderStagedHL", {fg = "#00FF00"})
     set_hl(0, "NvimTreeGitFileStagedHL", {fg = "#00FF00"})
     --------------------------------------------------------------------------------------------------------------------
-
-
 end
 
 
