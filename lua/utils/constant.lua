@@ -7,8 +7,8 @@ SCROLLOFF_PERCENT = 0.4
 ---@type number
 SIDESCROLLOFF_PERCENT = 0.4
 
----@type table[string: bool]
+---@type table
 TERM_OPTS = {silent = true}
 
----@type table[string: bool]
+---@type table
 DEFAULT_KEYMAP_OPTS = {noremap = true, silent = true}

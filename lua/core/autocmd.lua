@@ -153,7 +153,7 @@ cr_aucmd(
                 local re = {
                   cmd_begin = ":*",  -- '*' for multi-matching
                   sep = "%s*",
-                  help_topic = "[a-zA-Z%-%._]*"
+                  help_topic = "[a-zA-Z%-%._']*"
                 }
 
                 ---@type table
