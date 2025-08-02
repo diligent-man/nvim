@@ -1,3 +1,4 @@
+require("core.keymap.common")
 require("core.keymap.windows")
 
 

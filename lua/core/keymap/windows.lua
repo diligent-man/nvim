@@ -58,10 +58,10 @@ local mappings = {
     {{"n"}, "<leader>w<S-t>", "<C-w><S-t>", {desc = "Mov new tab"}},
 
 
-    --- Sect 6: Resizing ---
-    {{"n"}, "<leader>we", "<C-w>=", {desc = "Split eq"}},
-    {{"n"}, "<leader>wfh", "<C-w>_", {desc = "Full height"}},
-    {{"n"}, "<leader>wfw", "<C-w>|", {desc = "Full width"}},
+    --- Resizing ---
+    {{"n"}, "<leader>we", "<C-w>=", {desc = "Eq wins"}},
+    {{"n"}, "<leader>wfh", "<C-w>_", {desc = "Full height win"}},
+    {{"n"}, "<leader>wfw", "<C-w>|", {desc = "Full width win"}},
 
     -- Top origin (check moving direction later)
     {{"n"}, "<C-M-j>", "<C-w>-", {desc = "Dec height"}},
