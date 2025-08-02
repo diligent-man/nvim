@@ -59,14 +59,23 @@ wo.cursorlineopt = "both"  -- Comma-separated list of opts for how 'cursorline' 
 ------------------------------------------------------------------------------------------------------------------------
 
 
----------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 --- Scrolling ---
 wo.scrolloff =  scrolloff  -- min screen lines to keep above & below the cursor
 wo.sidescrolloff = sidescrolloff -- min cols to scroll horizontally. Used when "wrap" if off
 wo.scrollbind = false  -- same as cursorbind, but just scrolling. Interpreted by "scrollopt" in global_ops
 --wo.scroll = 15 -- left as default
 wo.smoothscroll = false  -- not use long line wrap so check later
----------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Windows ---
+wo.winfixbuf = false  -- how to use ?
+wo.winfixheight = false
+wo.winfixwidth = false
+------------------------------------------------------------------------------------------------------------------------
+
 
 
 wo.arabic = false
@@ -94,7 +103,4 @@ wo.signcolumn = "auto"
 wo.spell = false
 wo.statuscolumn = ""
 wo.winblend = 0
-wo.winfixbuf = false
-wo.winfixheight = false
-wo.winfixwidth = false
 wo.winhighlight = ""

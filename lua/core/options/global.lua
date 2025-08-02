@@ -287,6 +287,15 @@ o.confirm = true  -- confirmation for unsaved changes
 o.fileignorecase = false  -- file to ignore when searching. Case-sensitive treating in *nix, and case-insensitive in Win
 o.hlsearch = true  -- highlight all searched results
 
+o.timeout = true
+o.timeoutlen = 500
+o.ttimeout = true
+o.ttimeoutlen = 50
+
+
+
+
+
 
 
 o.fsync = true
@@ -391,10 +400,7 @@ o.termbidi = false
 o.termpastefilter = "BS,HT,ESC,DEL"
 o.termsync = true
 o.tildeop = false
-o.timeout = true
-o.timeoutlen = 1000
-o.ttimeout = true
-o.ttimeoutlen = 50
+
 o.undodir = std_path.state .. "/nvim/undo//"
 o.undoreload = 10000
 o.updatecount = 200
