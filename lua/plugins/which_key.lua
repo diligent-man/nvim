@@ -8,17 +8,33 @@ return {
     event = "VeryLazy",
 
     opts = {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
+        win =
+        {
+            wo = {
+                -- value between 0-100 0 for fully opaque and 100 for fully transparent
+                winblend = 0
+            }
+        },
+
+        layout = {spacing = 1},
+        keys = {scroll_down = "<c-j>", scroll_up = "<c-k>"},
+        icons =
+        {
+            rules =
+            {
+                -- normal case for pattern
+                {plugin = "nvim-tree.lua", pattern = "explorer", icon = "󰙅", color="yellow"}
+            }
+        }
     },
+
     keys = {
         {
             "<leader>?",
             function()
-                require("which-key").show({ global = false })
+                require("which-key").show({global = false})
             end,
-            desc = "Buffer Local Keymaps (which-key)",
+            desc = "Sample",
         },
     }
 }

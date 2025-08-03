@@ -16,6 +16,6 @@ cr_aucmd(
             callback = function ()
                 local winnr = tonumber(expand("<amatch>"))
                 schedule_wrap(autoclose_tab_buffer(winnr))
-            end,
-
-})
+            end
+        }
+)

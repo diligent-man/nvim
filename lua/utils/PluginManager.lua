@@ -8,7 +8,6 @@ local utils = require("utils")
 ---@type StdPath
 local StdPath = require("utils.StdPath").StdPath
 
-
 ---@type function
 local set_leader = utils.set_leader
 
@@ -90,19 +89,41 @@ function PluginManager:post_init()
 
     --------------------------------------------------------------------------------------------------------------------
     --- NVim Tree ---
-    set_hl(0, "NvimTreeNormal", {bg="#2B2D30"})
-    set_hl(0, "NvimTreeRootFolder", {italic=true, bold=true, fg="#00FFFF"})
+    local has_nvim_tree, _ = pcall(require, "nvim-tree")
+    if has_nvim_tree then
+        set_hl(0, "NvimTreeNormal", {bg="#2B2D30"})
+        set_hl(0, "NvimTreeRootFolder", {italic=true, bold=true, fg="#00FFFF"})
 
-    set_hl(0, "NvimTreeOpenedHL", {fg = "#FFFFFF", bg = "#0B94FC", bold=true})
+        set_hl(0, "NvimTreeOpenedHL", {fg = "#FFFFFF", bg = "#0B94FC", bold=true})
 
-    set_hl(0, "NvimTreeSymlink", {italic=true})
-    set_hl(0, "NvimTreeSymlinkFolderName", {fg="#9580F9", italic=true})
+        set_hl(0, "NvimTreeSymlink", {italic=true})
+        set_hl(0, "NvimTreeSymlinkFolderName", {fg="#9580F9", italic=true})
 
-    set_hl(0, "NvimTreeFolderName", {fg="#02AEFF"})
-    set_hl(0, "NvimTreeEmptyFolderName", {fg="#02AEFF"})
+        set_hl(0, "NvimTreeFolderName", {fg="#02AEFF"})
+        set_hl(0, "NvimTreeEmptyFolderName", {fg="#02AEFF"})
 
-    set_hl(0, "NvimTreeGitFolderStagedHL", {fg = "#00FF00"})
-    set_hl(0, "NvimTreeGitFileStagedHL", {fg = "#00FF00"})
+        set_hl(0, "NvimTreeGitFolderStagedHL", {fg = "#00FF00"})
+        set_hl(0, "NvimTreeGitFileStagedHL", {fg = "#00FF00"})
+    end
+    --------------------------------------------------------------------------------------------------------------------
+
+    --------------------------------------------------------------------------------------------------------------------
+    --- Which-keys ---
+    local has_which_key = pcall(require, "which-key")
+    if has_which_key then
+        ---@type table
+        local wk = require("which-key")
+
+        wk.add({
+            {"<leader>q", group = "Quit"},
+            {"<leader>w", group = "Windows"},
+
+            -- NvimTree
+            {"<leader>e", group = "Explorer"},
+            {"<leader>efb", group = "Bulky Ops"},
+            {"<leader>efn", group = "Fname copy"}
+        })
+        end
     --------------------------------------------------------------------------------------------------------------------
 end
 
