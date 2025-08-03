@@ -10,6 +10,7 @@ local mappings = {
     --- Confirm & Autowrite were set to true as default in options
     {{"n", "v"}, "<leader>qq", ":q<CR>", {desc = "Quit"}},
     {{"n", "v"}, "<leader>qa", ":qa<CR>", {desc = "Quit all"}},
+    {{"t"}, "<Esc>", "<C-\\><C-n>", {desc = "Exit term mode"}},
 }
 
 

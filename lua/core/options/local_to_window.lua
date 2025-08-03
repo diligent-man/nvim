@@ -22,7 +22,7 @@ wo.linebreak = false  -- how to break long line based on breakat opt
 
 ---------------------------------------------------------------------------------------------------------------------------
 --- Folding ---
-wo.foldmethod = "indent"  -- one outa six fold methods
+wo.foldmethod = "manual"  -- one outa six fold methods
 wo.foldminlines = 3  -- # of min lines to form a fold
 wo.foldnestmax = 20  -- Max ford for "indent" and "syntax" method
 wo.foldlevel = 1  -- Fold higher than this level, fold will be closed

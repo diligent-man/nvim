@@ -12,3 +12,6 @@ TERM_OPTS = {silent = true}
 
 ---@type table
 DEFAULT_KEYMAP_OPTS = {noremap = true, silent = true}
+
+---@type boolean
+WEEK_HEADER = false

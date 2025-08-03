@@ -19,6 +19,7 @@ list_wins = api.nvim_list_wins
 win_close = api.nvim_win_close
 win_get_buf = api.nvim_win_get_buf
 win_get_tabpage = api.nvim_win_get_tabpage
+get_current_win = api.nvim_get_current_win
 
 buf_get_name = api.nvim_buf_get_name
 
@@ -81,8 +82,9 @@ tbl_map = vim.tbl_map
 tbl_values = vim.tbl_values
 tbl_keys = vim.tbl_keys
 
-filter = vim.tbl_filter
 map = vim.tbl_map
+split = vim.split
+filter = vim.tbl_filter
 count =  vim.tbl_count
 
 contains = vim.tbl_contains
