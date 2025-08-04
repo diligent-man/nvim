@@ -47,7 +47,7 @@ API call: api.<module>.<fn>
 ---@type table
 local cmd_mappings = {
     {{"n"}, "<C-b>", ":NvimTreeToggle<CR>", {desc = "Toggle tree"}},
-    {{"n"}, "<C-B>", ":NvimTreeFindFileToggle<CR>", {desc = "Focus file"}},
+    {{"n"}, "<C-M-b>", ":NvimTreeFindFileToggle<CR>", {desc = "Focus file"}},
 
     {{"n"}, "<leader>eca", ":NvimTreeCollapse<CR>", {desc = "Collapse all"}},
     {{"n"}, "<leader>ecb", ":NvimTreeCollapseKeepBuffers<CR>", {desc = "Collapse all but opened buffer(s)"}},
@@ -154,15 +154,15 @@ local api_mappings = {
 
 for _, mapping in pairs(cmd_mappings) do
     local modes, lhs, rhs, other = unpack(mapping)
-    keymap(modes, lhs, rhs, other, OPTS)
+    keymap(modes, lhs, rhs, other, DEFAULT_KEYMAP_OPTS)
 end
 
 
 local function on_attach(bufnr)
     ---@param desc string
     ---@return table
-    local function opts(desc)
-        return {desc = desc, buffer = bufnr, noremap = true, silent = true, nowait = true}
+    local function opts(desc, buffer)
+        return {desc = desc, buffer = buffer, noremap = true, silent = true, nowait = true}
     end
 
     -- Not load default
@@ -170,7 +170,7 @@ local function on_attach(bufnr)
     
     for _, mapping in pairs(api_mappings) do
         local modes, lhs, rhs, desc = unpack(mapping)
-        keymap(modes, lhs, rhs, other, opts(desc, bufnr))
+        keymap(modes, lhs, rhs, opts(desc, bufnr))
     end
 end
 
