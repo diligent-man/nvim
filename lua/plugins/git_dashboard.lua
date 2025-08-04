@@ -6,7 +6,7 @@ return {
 
     config = function ()
         require('git-dashboard-nvim').setup{
-            fallback_header = "No git dashboard",
+            fallback_header = "No repo to display",
             top_padding = 0,
             bottom_padding = 0,
             use_git_username_as_author = true,

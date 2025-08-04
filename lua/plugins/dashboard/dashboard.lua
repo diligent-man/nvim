@@ -82,6 +82,13 @@ return {
                         icon = " ",
                         desc = " Youtube",
                         key = "y"
+                    },
+
+                    {
+                        action = "!cd $PYCHARM && ./pycharm.sh &",
+                        icon = " ",
+                        desc = " Pycharm",
+                        key = "p"
                     }
 
                     --{action = 'lua LazyVim.pick()()',                           desc = " Find File",       icon = " ", key = "f"},
@@ -108,6 +115,7 @@ return {
             button.key_format = "  %s"
         end
 
+        -- Set color
         set_hl(0, "DashboardHeader", {fg = "#52B65E"})
         set_hl(0, "DashboardFooter", {fg = "#61974C"})
 
