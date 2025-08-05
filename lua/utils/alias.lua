@@ -41,6 +41,7 @@ getbufinfo = fn.getbufinfo
 expand = fn.expand
 stdpath = fn.stdpath
 
+mode = fn.mode
 ------------------------------------------------------------------------------------------------------------------------
 
 

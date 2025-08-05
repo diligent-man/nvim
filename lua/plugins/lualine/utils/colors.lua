@@ -1,16 +1,21 @@
 ---@type table
 local colors = {
-    BG = '#16181b', -- Dark background
-    FG = '#c5c4c4', -- Light foreground for contrast
-    YELLOW = '#e8b75f', -- Vibrant yellow
-    CYAN = '#00bcd4', -- Soft cyan
-    DARKBLUE = '#2b3e50', -- Deep blue
-    GREEN = '#00e676', -- Bright green
-    ORANGE = '#ff7733', -- Warm orange
-    VIOLET = '#7a3ba8', -- Strong violet
-    MAGENTA = '#d360aa', -- Deep magenta
-    BLUE = '#4f9cff', -- Light-medium blue
-    RED = '#ff3344', -- Strong red
+    BG = "#171421", -- Dark background
+    --BG = "#16181b", -- Dark background
+
+    FG = "#c5c4c4",
+    YELLOW = "#e8b75f",
+    CYAN = "#00bcd4",
+    LIGHTBLUE = "#89ddff",
+    GREEN = "#00e676",
+    ORANGE = "#ff7733",
+    VIOLET = "#9d7cd8",
+    MAGENTA = "#d360aa",
+    BLUE = "#4f9cff",
+    RED = "#ff3344",
+    WHITE = "#FFFFFF",
+    CHARCOAL = "#192C2E",
+    CHARCOAL_GREY = "#364946"
 }
 
 
@@ -19,12 +24,12 @@ local opposite_colors = {
         [colors.RED] = colors.CYAN,
         [colors.BLUE] = colors.ORANGE,
         [colors.GREEN] = colors.MAGENTA,
-        [colors.MAGENTA] = colors.DARKBLUE,
+        [colors.MAGENTA] = colors.LIGHTBLUE,
         [colors.ORANGE] = colors.BLUE,
         [colors.CYAN] = colors.YELLOW,
-        [colors.VIOLET] = colors.GREEN,
+        [colors.VIOLET] = colors.LIGHTBLUE,
         [colors.YELLOW] = colors.RED,
-        [colors.DARKBLUE] = colors.VIOLET,
+        [colors.LIGHTBLUE] = colors.VIOLET,
 }
 
 

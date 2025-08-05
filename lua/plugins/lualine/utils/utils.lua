@@ -1,16 +1,14 @@
 require("utils.alias")
 
 
-
+---@type table
+local mappings = require("plugins.lualine.utils.mappings")
 
 ---@type table
-local mappings = require("plugins.lualine.cosmic.mappings")
+local colors = require("plugins.lualine.utils.colors").colors
 
 ---@type table
-local colors = require("plugins.lualine.cosmic.colors").colors
-
----@type table
-local opposite_colors = require("plugins.lualine.cosmic.colors").opposite_colors
+local opposite_colors = require("plugins.lualine.utils.colors").opposite_colors
 
 
 ---@type table
@@ -46,7 +44,6 @@ end
 local function get_animated_color(mode_color)
     -- Define a list of all available colors
     local all_colors = {
-        colors.RED,
         colors.BLUE,
         colors.GREEN,
         colors.MAGENTA,
@@ -54,7 +51,7 @@ local function get_animated_color(mode_color)
         colors.CYAN,
         colors.VIOLET,
         colors.YELLOW,
-        colors.DARKBLUE,
+        colors.LIGHTBLUE,
     }
 
     -- Create a list of possible opposite colors (excluding the current mode color)
@@ -112,42 +109,54 @@ local function get_middle_color(color_step)
 end
 
 
--- Function to create a mode-based component (e.g., statusline)
--- with optional content, icon, and colors
-local function create_mode_based_component(content, icon, color_fg, color_bg)
+---@param content string | function | nil
+---@param icon string | function | nil
+---@param color_fg string | nil
+---@param color_bg string | nil
+---@return table
+local function create_mode_based_component(content, icon, color_fg, color_bg, cond)
+    -- Function to create a mode-based component (e.g., statusline)
+    -- with optional content, icon, and colors
     return {
-        content,
-        icon = icon,
+        type(content) == "function" and content() or content,
+        icon = type(icon)  == "function" and icon() or icon,
+
         color = function()
             local mode_color = get_m2c()
             local opposite_color = get_opposite_color(mode_color)
+
             return {
                 fg = color_fg or colors.FG,
                 bg = color_bg or opposite_color,
-                gui = 'bold',
+                gui = 'bold,italic'
             }
         end,
+        cond = cond
     }
 end
 
 
+---@param width number
 ---@return boolean
-local function hide_in_width()
+local function hide_in_width(width)
     -- Condition: Hide in width (only show the statusline when the window width is greater than 80)
     -- This ensures that the statusline will only appear if the current window width exceeds 80 characters.
-    return winwidth(0) > 80 -- 'winwidth(0)' returns the current window width
+    width = width or 80
+    return winwidth(0) > width
 end
 
 
 ---@param side string
----@param use_mode_color boolean
+---@param use_mode_color boolean | nil
+---@param cond function | nil
 ---@return table
-local function create_separator(side, use_mode_color)
+local function create_separator(side, use_mode_color, cond)
     -- Function to create a separator component based on side (left/right) and optional mode color
     return {
         function()
-            return side == 'left' and '' or '' -- Choose separator symbol based on side
+            return side == "left" and "" or ""
         end,
+
         color = function()
             -- Set color based on mode or opposite color
             local color = use_mode_color and get_m2c() or get_opposite_color(get_m2c())
@@ -155,9 +164,9 @@ local function create_separator(side, use_mode_color)
                 fg = color,
             }
         end,
-        padding = {
-            left = 0,
-        },
+
+        padding = {left = 0},
+        cond = cond
     }
 end
 
