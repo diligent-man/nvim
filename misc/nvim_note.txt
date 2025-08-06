@@ -298,3 +298,28 @@ There're 6 fold methods, including
     4/ syntax: defined by syntax highlighting
     5/ diff: folds for unchanged txt
     6/ marker: Markers are used to specify folds (not recommended for coding)
+-----------------------------------------------------------
+
+                Plugin manager
+In vimscript era, there are 4 ways to install plugin for nvim
+    a/ vim-plug
+    b/ Vundle
+    c/ NeoBundle
+    d/ Pathogen
+However, since the version of 0.11, with the great advancement of Lua integration, we have Lazy.nvim
+as the common manager for nvim.
+
+In the past, plugin should be put into {package_path}/pack/{pack_name} but now it handled via $RUNTIMEPATH envvar in present.
+Most of plugins can be found in Vim Awesome
+------------------------------------------------------------------------------------------------------------------------
+
+                Vim Motion
+{count}op{count}{motion}
+e.g
+    a/ Move along 3 words: 3w
+    b/ Delete 2 words: d2w
+    c/ Delete 3w motion 2 times: 2d3w
+    d/ Delete two below lines: 2dd
+    e/ Move up/ down 10 lines: 10k/ j
+    f/ 10 lines from the beginning: 10gg/ G
+

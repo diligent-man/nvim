@@ -1,5 +1,3 @@
--- TODO: Turn statusline off or inactive in dashboard
-
 ---@type table
 local colors = require("plugins.lualine.utils.colors").colors
 
@@ -9,12 +7,6 @@ local utils = require("plugins.lualine.utils.utils")
 
 ---@type function
 local get_m2c = utils.get_m2c
-
----@type function
-local get_m2m = utils.get_m2m
-
----@type function
-local get_opposite_color = utils.get_opposite_color
 
 
 --[[
@@ -67,7 +59,7 @@ local StatusBar = {
         globalstatus = false,
 
         refresh = {
-            statusline = 200,
+            statusline = 500,
             tabline = 1000,
             winbar = 1000,
             refresh_time = 16, -- ~60fps
@@ -79,12 +71,11 @@ local StatusBar = {
                 "FileChangedShellPost",
                 "VimResized",
                 "Filetype",
-                "CursorMoved",
-                "CursorMovedI",
-                "ModeChanged",
+                --"CursorMoved",
+                --"CursorMovedI",
+                --"ModeChanged",
             },
         }
-
     },
 
     sections = {

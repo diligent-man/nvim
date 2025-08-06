@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b7fea100-82cb-4661-84eb-e92c8323bfaa" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Dockerfile" />
+        <option value="NewLua" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="303EFhm1OO7KGVPQCT9G6iosIlA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Lua Application.options.lua.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/trong/Downloads/Fast_Local/Source/Lua/nvim/lua/plugins/lualine/utils&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lua/plugins/lualine/utils" />
+      <recent name="$PROJECT_DIR$/lua/plugins" />
+      <recent name="$PROJECT_DIR$/misc" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/lua/ext_vim_lua" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lua/plugins/lualine" />
+      <recent name="$PROJECT_DIR$/lua/plugins/lualine/utils" />
+      <recent name="$PROJECT_DIR$/lua/plugins/lualine/cosmic" />
+      <recent name="$PROJECT_DIR$/lua/plugins/dashboard" />
+      <recent name="$PROJECT_DIR$/lua/plugins" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.17890.14" />
+        <option value="bundled-python-sdk-5b207ade9991-7e9c3bbb6e34-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.17890.14" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b7fea100-82cb-4661-84eb-e92c8323bfaa" name="Changes" comment="" />
+      <created>1752847753200</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1752847753200</updated>
+      <workItem from="1752847754225" duration="14921000" />
+      <workItem from="1753104070429" duration="4990000" />
+      <workItem from="1753161693581" duration="6159000" />
+      <workItem from="1753172261695" duration="599000" />
+      <workItem from="1753196548524" duration="2001000" />
+      <workItem from="1753237699471" duration="1288000" />
+      <workItem from="1753278607901" duration="3848000" />
+      <workItem from="1753283728331" duration="10251000" />
+      <workItem from="1753330515104" duration="9177000" />
+      <workItem from="1753342944497" duration="10894000" />
+      <workItem from="1753358131392" duration="307000" />
+      <workItem from="1753358940695" duration="773000" />
+      <workItem from="1753359720202" duration="12085000" />
+      <workItem from="1753376665511" duration="27000" />
+      <workItem from="1753376698128" duration="7000" />
+      <workItem from="1753376721589" duration="8748000" />
+      <workItem from="1753426879881" duration="7053000" />
+      <workItem from="1753439137187" duration="4129000" />
+      <workItem from="1753444042925" duration="3502000" />
+      <workItem from="1753447976674" duration="30370000" />
+      <workItem from="1753633701569" duration="104000" />
+      <workItem from="1753679379883" duration="6629000" />
+      <workItem from="1753693301336" duration="54209000" />
+      <workItem from="1753782970657" duration="2549000" />
+      <workItem from="1753808366438" duration="54000" />
+      <workItem from="1753808447410" duration="633000" />
+      <workItem from="1753857531209" duration="6598000" />
+      <workItem from="1753877281725" duration="61394000" />
+      <workItem from="1754032690211" duration="12089000" />
+      <workItem from="1754130436623" duration="80576000" />
+      <workItem from="1754285260901" duration="1485000" />
+      <workItem from="1754286771981" duration="315000" />
+      <workItem from="1754287116448" duration="20000" />
+      <workItem from="1754287199166" duration="34000" />
+      <workItem from="1754287237190" duration="10000" />
+      <workItem from="1754287256385" duration="23000" />
+      <workItem from="1754287288501" duration="165000" />
+      <workItem from="1754287477768" duration="10293000" />
+      <workItem from="1754305653940" duration="29177000" />
+      <workItem from="1754365688717" duration="16011000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
