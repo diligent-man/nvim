@@ -31,12 +31,19 @@ local mappings = {
     --- Focusing ---
     -- number allowed (move n-th wins). Tips: 999 <leader>w<Left> for the leftmost win
     {{"n"}, "<leader>w<Left>", "<C-w>h", {desc = "Focus left"}},
+    {{"n"}, "<leader>wh", "<C-w>h", {desc = "Focus left"}},
+
     -- number allowed (//). Tips: 999 <leader>w<Right> for the rightmost win
     {{"n"}, "<leader>w<Right>", "<C-w>l", {desc = "Focus right"}},
+    {{"n"}, "<leader>wl", "<C-w>l", {desc = "Focus right"}},
+
     -- number allowed (//). Tips: 999 <leader>w<Down> for the bottommost win
     {{"n"}, "<leader>w<Down>", "<C-w>j", {desc = "Focus down"}},
+    {{"n"}, "<leader>wj", "<C-w>j", {desc = "Focus down"}},
+
     -- number allowed (//). Tips: 999 <leader>w<Up> for the topmost win
     {{"n"}, "<leader>w<Up>", "<C-w>k", {desc = "Focus up"}},
+    {{"n"}, "<leader>wk", "<C-w>k", {desc = "Focus up"}},
 
     {{"n"}, "<leader>wt", "<C-w>t", {desc = "Focus top-left"}},
     {{"n"}, "<leader>wb", "<C-w>b", {desc = "Focus bottom-right"}},

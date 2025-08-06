@@ -125,6 +125,7 @@ function PluginManager:post_init()
         })
         end
     --------------------------------------------------------------------------------------------------------------------
+    --- Gitsigns ---
     local has_gitsigns, _ = pcall(require, "gitsigns")
     if has_gitsigns then
         set_hl(0, "GitSignsAdd", {fg = "#8AFF80", link="GitSignsAdd", bold=true})
