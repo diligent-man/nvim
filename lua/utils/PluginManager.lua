@@ -125,6 +125,14 @@ function PluginManager:post_init()
         })
         end
     --------------------------------------------------------------------------------------------------------------------
+    local has_gitsigns, _ = pcall(require, "gitsigns")
+    if has_gitsigns then
+        set_hl(0, "GitSignsAdd", {fg = "#8AFF80", link="GitSignsAdd", bold=true})
+        set_hl(0, "GitSignsChange", {fg = "#FFFF80", link="GitSignsChange", bold=true})
+        set_hl(0, "GitSignsDelete", {fg = "#FF9580", link="GitSignsDelete", bold=true})
+        set_hl(0, "GitSignsTopDelete", {fg = "#FF9580", link="GitSignsTopDelete", bold=true})
+        set_hl(0, "GitSignsChangeDelete", {fg = "#FF0000", link="GitSignsChangeDelete", bold=true})
+    end
 end
 
 
