@@ -83,6 +83,7 @@ end
 
 ---@return void
 function PluginManager:post_init()
+    --- Colorscheme ---
     vicmd("syntax on")
     vicmd("syntax enable")
     vicmd("colorscheme dracula_pro_van_helsing_custom")
@@ -105,7 +106,17 @@ function PluginManager:post_init()
         set_hl(0, "NvimTreeGitFolderStagedHL", {fg = "#00FF00"})
         set_hl(0, "NvimTreeGitFileStagedHL", {fg = "#00FF00"})
     end
+
     --------------------------------------------------------------------------------------------------------------------
+    --- Gitsigns ---
+    local has_gitsigns, _ = pcall(require, "gitsigns")
+    if has_gitsigns then
+        set_hl(0, "GitSignsAdd", {fg = "#8AFF80", link="GitSignsAdd", bold=true})
+        set_hl(0, "GitSignsChange", {fg = "#FFFF80", link="GitSignsChange", bold=true})
+        set_hl(0, "GitSignsDelete", {fg = "#FF9580", link="GitSignsDelete", bold=true})
+        set_hl(0, "GitSignsTopDelete", {fg = "#FF9580", link="GitSignsTopDelete", bold=true})
+        set_hl(0, "GitSignsChangeDelete", {fg = "#FF0000", link="GitSignsChangeDelete", bold=true})
+    end
 
     --------------------------------------------------------------------------------------------------------------------
     --- Which-keys ---
@@ -121,19 +132,13 @@ function PluginManager:post_init()
             -- NvimTree
             {"<leader>e", group = "Explorer"},
             {"<leader>efb", group = "Bulky Ops"},
-            {"<leader>efn", group = "Fname copy"}
+            {"<leader>efn", group = "Fname copy"},
+
+            -- Mason
+            {"<leader>ma", group = "Mason"},
         })
         end
     --------------------------------------------------------------------------------------------------------------------
-    --- Gitsigns ---
-    local has_gitsigns, _ = pcall(require, "gitsigns")
-    if has_gitsigns then
-        set_hl(0, "GitSignsAdd", {fg = "#8AFF80", link="GitSignsAdd", bold=true})
-        set_hl(0, "GitSignsChange", {fg = "#FFFF80", link="GitSignsChange", bold=true})
-        set_hl(0, "GitSignsDelete", {fg = "#FF9580", link="GitSignsDelete", bold=true})
-        set_hl(0, "GitSignsTopDelete", {fg = "#FF9580", link="GitSignsTopDelete", bold=true})
-        set_hl(0, "GitSignsChangeDelete", {fg = "#FF0000", link="GitSignsChangeDelete", bold=true})
-    end
 end
 
 

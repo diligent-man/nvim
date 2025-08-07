@@ -9,12 +9,10 @@ return {
     config = function()
         local treesitter = require("nvim-treesitter.configs")
 
-        treesitter.
-        setup({
+        treesitter.setup({
             highlight = {
-                -- check highlight later
-                enable = false,
-                additional_vim_regex_highlighting = false
+                enable = true,
+                additional_vim_regex_highlighting = true
             },
 
             indent = {
