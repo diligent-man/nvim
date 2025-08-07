@@ -1,6 +1,5 @@
 require("utils.alias")
 
-
 ---@return Notifier
 local Notifier = require("utils.Notifier").Notifier
 
@@ -13,10 +12,6 @@ local arr_ops = require("ext_lua.arr_ops")
 ---@return table
 local str_ops = require("ext_lua.str_ops")
 
----@return table
-local dict_ops = require("ext_lua.dict_ops")
-
-
 ---@return function
 local is_in = arr_ops.is_in
 
@@ -25,9 +20,6 @@ local split = str_ops.split
 
 ---@return function
 local os_name  = os_ops.os_name
-
----@return function
-local get_vals = dict_ops.get_vals
 
 
 ---@class StdPath
@@ -51,10 +43,8 @@ StdPath.__index = function (self, key)
     ---@type table
     local _paths = getmetatable(self).__paths
 
-    print()
-
     assert(is_in(_paths, key) == true,
-    string.format("Attr should be in %s. Get \"%s\" instead", get_vals(_paths, true, "string"), key)
+    string.format("Attr should be in %s. Get \"%s\" instead", vim.json.encode(tbl_values(_paths)), key)
     )
 
     if key == "config_dirs" or key == "data_dirs" then

@@ -94,6 +94,9 @@ isempty = vim.tbl_isempty
 extend = vim.tbl_extend
 deep_extend = vim.tbl_deep_extend
 
+-- List
+list_extend= vim.list_extend
+
 
 -- libUV
 os_uname = uv.os_uname
