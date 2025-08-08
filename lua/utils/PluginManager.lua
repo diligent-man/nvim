@@ -133,10 +133,10 @@ function PluginManager:post_init()
     set_hl(0, "DiagnosticSignInfo", {fg="#2C763B"})
 
     set_hl(0, "LspInlayHint", {fg = "yellow"}) -- effect ? check when know :)
-    set_hl(0, "LspReferenceTarget", {fg = "red"}) -- effect ? check when know :)
     set_hl(0, "LspReferenceText", {fg = "magenta"}) -- effect ? check when know :)
     set_hl(0, "LspReferenceRead", {bg = "#414D58"})
     set_hl(0, "LspReferenceWrite", {bg = "#414D58"})
+    set_hl(0, "LspReferenceTarget", {reverse=true, italic=true}) -- effect on show Doc/ Def
 
     --------------------------------------------------------------------------------------------------------------------
     --- Which-keys ---

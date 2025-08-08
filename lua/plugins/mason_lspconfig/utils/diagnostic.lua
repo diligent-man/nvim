@@ -1,17 +1,47 @@
+-- Ref: https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.config() at vim.diagnostic section
 require("utils.alias")
 
 
 ---@type table
 local diagnostic_cfg = {
-    virtual_text = true,  -- in-line diagnosed msg
-    underline = false,
+    float = {border = "rounded", source = "if_many"},
+    update_in_insert = true, -- instead of on InsertLeave event
+    severity_sort = true,  -- ERROR > WARN > INFO > HINT
+    underline = false and {severity = diagnostic.severity.ERROR},
+
+    -- in-line diagnosed msg
+    virtual_text = true and {
+        current_line = false,
+        source = "if_many",
+        spacing = 0,
+
+        ---@param diagnostic table
+        prefix = function (diagnostic)
+            return "" -- Add PEP (Python) later
+        end,
+
+        ---@param diagnostic table
+        suffix = function (diagnostic)
+            return "" -- Check later
+        end,
+
+        format = function(diagnostic)
+            local diagnostic_message = {
+                [vim.diagnostic.severity.ERROR] = diagnostic.message,
+                [vim.diagnostic.severity.WARN] = diagnostic.message,
+                [vim.diagnostic.severity.INFO] = diagnostic.message,
+                [vim.diagnostic.severity.HINT] = diagnostic.message,
+            }
+            return diagnostic_message[diagnostic.severity]
+        end
+    },
 
     signs = {
         text = {
-            [diagnostic.severity.ERROR] = "✘",
-            [diagnostic.severity.WARN] = "▲️",
-            [diagnostic.severity.HINT] = "⚑",
-            [diagnostic.severity.INFO] = "»",
+            [diagnostic.severity.ERROR] = "✘" and "󰅚",
+            [diagnostic.severity.WARN] = "▲️" and "󰀪",
+            [diagnostic.severity.HINT] = "⚑" and "󰌶",
+            [diagnostic.severity.INFO] = "»" and "󰋽",
         },
         numhl = {
             [diagnostic.severity.WARN] = "DraculaYellow",
