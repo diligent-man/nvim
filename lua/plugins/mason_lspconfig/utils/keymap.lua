@@ -11,7 +11,7 @@ local mappings = {
     {{"n"}, "<leader>mam", ":Mason<CR>", {desc = "Menu"}},
 
     --- LSP
-    {{"i"}, "<C-Space>", function() vim.lsp.completion.get() end, {desc = "Autocomplete"}},
+    {{"i"}, "<C-Space>", function() lsp.completion.get() end, {desc = "Autocomplete"}},
 }
 
 

@@ -354,3 +354,7 @@ be executed to configure the current buffer
 So it seems evident that features that concerns projects like jumping to definition in other files or completion should
 be done by the LSP and what must be fast, error safe and can be done in one file, like syntax highlighting and syntax checking
 should be done by treesitter.
+
+------------------------------------------------------------------------------------------------------------------------
+                    Semantic highlight
+https://gist.github.com/swarn/fb37d9eefe1bc616c2a7e476c0bc0316

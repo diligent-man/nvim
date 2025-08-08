@@ -31,7 +31,7 @@ return {
         ----------------------------------------------------------------------------------------------------------------
 
         for server, cfg in pairs(servers) do
-            utils.override_capabilities(server, cfg.opts)
+            utils.override_capabilities(server, cfg.capabilities, cfg.opts)
         end
     end
 }

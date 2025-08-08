@@ -11,6 +11,7 @@ local servers =
 {
     ["lua_ls"] = {
         version = "3.15.0",
+        doc = "https://luals.github.io/wiki/configuration/",
         opts =
         {
             root_markers = {
@@ -21,25 +22,28 @@ local servers =
         }
     },
 
-    --["pyright"] = {
-    --    version = "1.1.403",
-    --    opts =
-    --    {
-    --        root_markers = {{"pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json"}, ".git"},
-    --        python = {
-    --            analysis = {
-    --                autoSearchPaths = true,
-    --                diagnosticMode = "openFilesOnly",
-    --                useLibraryCodeForTypes = true
-    --            }
-    --        }
-    --
-    --    }
-    --}
+    ["pyright"] = {
+        version = "1.1.403",
+        doc = "https://microsoft.github.io/pyright/#/",
+        opts =
+        {
+            root_markers = {{"pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json"}, ".git"},
+        }
+    },
 
-    ["basedpyright"] = {
-        version = "1.31.1",
+    ["clangd"] = {
+        version = "20.1.8",
+        doc = "https://clangd.llvm.org/",
         opts = {}
+    },
+
+    ["bashls"] = {
+        version = "5.5.0",
+        doc = "https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file",
+        opts = {
+            filetypes = {"bash", "sh"},
+            root_markers = {".git"}
+        }
     }
 }
 
