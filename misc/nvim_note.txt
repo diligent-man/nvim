@@ -325,22 +325,57 @@ e.g
 
 ------------------------------------------------------------------------------------------------------------------------
             LSP vs Tree-sitter
-Brief aside: **What is LSP?**
-LSP is an initialism you've probably heard, but might not understand what it is. LSP stands for Language Server Protocol.
-It's a protocol that helps editors and language tooling communicate in a standardized fashion. In general, you have a
-"server" which is some tool built to understand a particular language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.).
-These Language Servers (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone processes
-that communicate with some "client" - in this case, Neovim!
+I/ Language server protocol (LSP)
+    LSP is a protocol that helps editors and language tool communicate in a standardized fashion. In general, you have a
+"server" which is some tool built to understand a particular language (such as "lua_ls" for Lua, "pyrihgt" for Python, etc.).
+These Language Servers (sometimes called LSP servers) are standalone processes that communicate with some "client",
+Neovim in this case!. By default, when LSP client starts, it enables diagnostics.
 
-LSP provides Neovim with features like:
- - Go to definition
+    There are 2 types of behaviors that LSP will act,
+        a/ Statically act (global) vim.lsp.config
+        b/ Dynamically act (buffer-based): lsp-attach autocmd (LspAttach event) or Client:on_attach()
+
+LSP facilitates features like:
+ - Go-to definition
  - Find references
+ - Hover
  - Autocompletion
+ - Rename
+ - Format
+ - Linting
+ - Refactor
  - Symbol Search
  - and more!
 
-Thus, Language Servers are external tools that must be installed separately from
-Neovim. This is where `mason` and related plugins come into play.
+
+How to get LSP features
+1/ Install wanted server
+    a/ Method 1 (manual)
+        Find from below url -> Install -> Put server on $PATH
+
+    b/ Method 2 (Mason)
+        Find from below url -> Enter & Wait
+
+    https://microsoft.github.io/language-server-protocol/implementors/servers/
+
+2/ Define a new config
+    There are six fields can be configured
+        cmd (table): Override the default command used to start the server
+        filetypes (table): Override the default list of associated filetypes for the server
+        capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
+        settings (table): Override the default settings passed when initializing the server.
+        root_markers (table): A list of files or folders. We will use this to determine the root of the project.
+
+3/ Enable LSP server by
+    vim.lsp.enable('luals')
+
+    => Should be enabled only when buffer with specific ftype enter
+
+4/ Check health LSP server
+    :checkhealth vim.lsp
+
+
+
 
 If you're wondering about lsp vs treesitter, you can check out the wonderfully
 and elegantly composed help section, `:help lsp-vs-treesitter`
