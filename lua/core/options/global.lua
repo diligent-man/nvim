@@ -292,7 +292,9 @@ o.timeoutlen = 500
 o.ttimeout = true
 o.ttimeoutlen = 50
 
-
+o.undoreload = 10000
+o.updatecount = 200
+o.updatetime = 250  -- affect LspReferenceText
 
 
 
@@ -402,9 +404,8 @@ o.termsync = true
 o.tildeop = false
 
 o.undodir = std_path.state .. "/nvim/undo//"
-o.undoreload = 10000
-o.updatecount = 200
-o.updatetime = 40000
+
+
 o.verbose = 0
 o.verbosefile = ""
 o.viewdir = std_path.state .. "/nvim/view//"

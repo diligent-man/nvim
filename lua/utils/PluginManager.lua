@@ -119,6 +119,26 @@ function PluginManager:post_init()
     end
 
     --------------------------------------------------------------------------------------------------------------------
+    --- Lsp Diagnostics ---
+    --- Underline of diagnostics linehl (currently disabled in mason_lspconfig/utils/diagnostic.lua)
+    set_hl(0, "LspDiagnosticsWarn", {sp="#FFFF80"})
+    set_hl(0, "LspDiagnosticsHint", {sp="#80FFEA"})
+    set_hl(0, "LspDiagnosticsError", {sp="#FF9580"})
+    set_hl(0, "LspDiagnosticsInfo", {sp="#2C763B"})
+
+    --- Signs text
+    set_hl(0, "DiagnosticSignWarn", {fg="#FFFF80"})
+    set_hl(0, "DiagnosticSignHint", {fg="#80FFEA"})
+    set_hl(0, "DiagnosticSignError", {fg="#FF9580"})
+    set_hl(0, "DiagnosticSignInfo", {fg="#2C763B"})
+
+    set_hl(0, "LspInlayHint", {fg = "yellow"}) -- effect ? check when know :)
+    set_hl(0, "LspReferenceTarget", {fg = "red"}) -- effect ? check when know :)
+    set_hl(0, "LspReferenceText", {fg = "magenta"}) -- effect ? check when know :)
+    set_hl(0, "LspReferenceRead", {bg = "#414D58"})
+    set_hl(0, "LspReferenceWrite", {bg = "#414D58"})
+
+    --------------------------------------------------------------------------------------------------------------------
     --- Which-keys ---
     local has_which_key = pcall(require, "which-key")
     if has_which_key then

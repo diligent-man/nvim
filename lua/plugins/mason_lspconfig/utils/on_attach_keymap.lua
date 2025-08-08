@@ -2,17 +2,7 @@ require("utils.alias")
 
 
 local on_attach = function(client, bufnr)
-    vim.lsp.completion.enable(
-            true,
-            client.id,
-            bufnr, {
-                autotrigger = true,
-                --convert = function(item)
-                --    return {abbr = item.label:gsub('%b()', '')}
-                --end,
-    })
-
-    local attach_opts = {silent = true, buffer = bufnr}
+    --local attach_opts = {silent = true, buffer = bufnr}
     --keymap("n", "gD", lsp.buf.declaration, attach_opts)
     --keymap("n", "gd", lsp.buf.definition, attach_opts)
     --vim.keymap.set('n', 'K', vim.lsp.buf.hover, attach_opts)

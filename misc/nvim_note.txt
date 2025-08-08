@@ -336,19 +336,26 @@ Neovim in this case!. By default, when LSP client starts, it enables diagnostics
         b/ Dynamically act (buffer-based): lsp-attach autocmd (LspAttach event) or Client:on_attach()
 
 LSP facilitates features like:
- - Go-to definition
- - Find references
- - Hover
- - Autocompletion
- - Rename
- - Format
- - Linting
- - Refactor
- - Symbol Search
- - and more!
+    - Go-to definition
+    - Find references
+    - Hover
+    - Autocompletion
+    - Rename
+    - Format
+    - Linting
+    - Refactor
+    - Symbol Search
+    - and more!
 
 
-How to get LSP features
+                    Config merging
+    When starting, Nvim resolves config by merging the following resources in order of increasing priority
+        1/ Config defined by "*" name
+        2/ Config from the result of merging all table returned by lsp/<server_name>.lua in $RUNTIMEPATH
+        3/ Configurations defined anywhere else
+
+
+                 How to get LSP features
 1/ Install wanted server
     a/ Method 1 (manual)
         Find from below url -> Install -> Put server on $PATH
@@ -375,7 +382,29 @@ How to get LSP features
     :checkhealth vim.lsp
 
 
+                LSP features
+    To use LSP features beyond those provided by Nvim (https://neovim.io/doc/user/lsp.html#lsp-buf), we can set keymaps
+& options via Client:on_attach() or LspAttach autocmd. Depending on each language, we should check heck supports_method()
+in your LspAttach handler.
 
+
+            Changes through version
+Since Neovim v0.8
+    tagfunc: enables go-to def
+    omnifunc: trigger code autocomplete
+    formatexpr: format lines via gq, gw
+
+Since Neovim v0.9
+    Semantic highlight is supported -> Provide info about tokens in src code
+
+Since Neovim v0.10
+    <C-S-k> show relevant doc
+    [d, ]d to move b/t diagnostics
+
+Since Neovim v0.11
+    gr[nari] functionalities
+    gO list all symbols in cur buf
+    <C-s> display fn signatures
 
 If you're wondering about lsp vs treesitter, you can check out the wonderfully
 and elegantly composed help section, `:help lsp-vs-treesitter`
