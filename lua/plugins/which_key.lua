@@ -23,7 +23,8 @@ return {
             rules =
             {
                 -- normal case for pattern
-                {plugin = "nvim-tree.lua", pattern = "explorer", icon = "󰙅", color="yellow"}
+                {pattern = "buffer", icon = "", color="red"},
+                {plugin = "nvim-tree.lua", pattern = "explorer", icon = "󰙅", color="yellow"},
             }
         }
     },

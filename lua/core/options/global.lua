@@ -174,6 +174,7 @@ o.backspace = "indent,eol,start"
 
 ------------------------------------------------------------------------------------------------------------------------
 --- Commandline mode ---
+o.hi = 10000  -- cmd history
 o.cedit = "<C-h>"  -- History cmd-mode
 o.cmdwinheight = 5
 ------------------------------------------------------------------------------------------------------------------------
@@ -197,12 +198,12 @@ o.digraph = false  -- entering digraph with <BS>. Turn off due to the use of <C-
 --- Searching & Replacing ---
 o.gdefault = false  -- replace all instead of one
 o.inccommand = "split"  -- additionally display partial result off-screen
-o.incsearch = true
+o.incsearch = true  -- allow incremental search with "/"
+o.hlsearch = true  -- highlight all searched results
 
 -- Case insensitive ---
 o.ignorecase = false
 o.smartcase = false  --
-
 ------------------------------------------------------------------------------------------------------------------------
 
 
@@ -267,6 +268,22 @@ o.scrollopt = "hor,ver,jump"  -- currently off (see local2window opt)
 
 
 ------------------------------------------------------------------------------------------------------------------------
+--- Keymap ---
+o.timeout = true
+o.timeoutlen = 1000  -- timeout for a seq of keymap. Useful for insert/ visual keymap
+o.ttimeout = true
+o.ttimeoutlen = 50  -- timeout for a seq of keymap in terminal
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--- Swap file ---
+o.updatecount = 200
+o.updatetime = 250  -- affect LspReferenceText (CursorHold event) & swap file writing
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
 --- Misc ---
 --[[
     Intergrate Nvim's internal text registers with os's clipboard. Defined by a list of comma-separated clipboard. For
@@ -285,25 +302,14 @@ o.confirm = true  -- confirmation for unsaved changes
 ------------------------------------------------------------------------------------------------------------------------
 
 o.fileignorecase = false  -- file to ignore when searching. Case-sensitive treating in *nix, and case-insensitive in Win
-o.hlsearch = true  -- highlight all searched results
-
-o.timeout = true
-o.timeoutlen = 500
-o.ttimeout = true
-o.ttimeoutlen = 50
-
 o.undoreload = 10000
-o.updatecount = 200
-o.updatetime = 250  -- affect LspReferenceText
-
-
 
 
 
 o.fsync = true
 o.hidden = true
 
-o.hi = 10000
+
 o.icon = false
 o.iconstring = ""
 --o.isfname -- left as default

@@ -13,9 +13,9 @@ return {
     event = 'VimEnter',
 
     dependencies = {
-        "juansalvatore/git-dashboard-nvim",
         "folke/persistence.nvim",
         "nvim-tree/nvim-web-devicons",
+        "juansalvatore/git-dashboard-nvim",
     },
 
     opts = function()
