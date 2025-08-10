@@ -1,3 +1,7 @@
+--[[
+TODO: Make completion select by Tab not arrow
+TODO: Rename with current buffer instead of all files
+]]
 require("utils.alias")
 require("utils.constant")
 

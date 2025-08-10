@@ -3,9 +3,9 @@ The reason I put lsp & mason together because mason acts as an LSP manager
 ]]
 require("utils.alias")
 
-require("plugins.mason_lspconfig.utils.autocmd")
-require("plugins.mason_lspconfig.utils.keymap")
-require("plugins.mason_lspconfig.utils.diagnostic")
+require("plugins.mason_lspconfig.autocmd")
+require("plugins.mason_lspconfig.keymap")
+require("plugins.mason_lspconfig.diagnostic")
 
 
 ---@type table
