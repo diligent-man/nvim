@@ -59,6 +59,4 @@ local diagnostic_cfg = {
 }
 
 
-return {
-    diagnostic_cfg = diagnostic_cfg
-}
+diagnostic.config(diagnostic_cfg)

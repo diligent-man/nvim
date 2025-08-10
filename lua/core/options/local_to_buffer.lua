@@ -6,10 +6,20 @@ require("utils.alias")
 ---------------------------------------------------------------------------------------------------------------------------
 --- Scrolling ---
 bo.scrollback = 10000  -- max lines kept beyond the visible screen & deleted if new lines exceed this limit. Only terminal buffer
+------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------
+--- Indentation ---
+bo.tabstop = 4
+bo.shiftwidth = 4  -- Indent have width of 4
+bo.softtabstop = 0  -- # cols for a <Tab>. O for off feature
+bo.expandtab = true  -- convert <Tab> to <Space>
+bo.autoindent = true  -- copy indent from current to new line
+bo.smartindent = true  -- use softtabstop instead
 ---------------------------------------------------------------------------------------------------------------------------
 
 
-bo.autoindent = true
+
 bo.binary = false
 bo.bomb = false
 bo.bufhidden = ""
@@ -30,7 +40,7 @@ bo.completeslash = ""
 bo.copyindent = false
 bo.endoffile = false
 bo.endofline = true
-bo.expandtab = false
+
 bo.fileencoding = ""
 --bo.fileformat  -- left as default
 bo.filetype = ""
@@ -58,9 +68,7 @@ bo.preserveindent = false
 bo.quoteescape = "\\"
 bo.readonly = false
 
-bo.shiftwidth = 8
-bo.smartindent = false
-bo.softtabstop = 0
+
 bo.spellcapcheck = "[.?!]\\_[\\])'\"\\t ]\\+"
 bo.spellfile = ""
 bo.spelllang = "en"
@@ -69,7 +77,7 @@ bo.suffixesadd = ""
 bo.swapfile = true
 bo.synmaxcol = 3000
 bo.syntax = ""
-bo.tabstop = 8
+
 bo.tagfunc = ""
 bo.textwidth = 0
 bo.undofile = false

@@ -1,9 +1,7 @@
 require("utils.alias")
 
-local on_attach = require("plugins.mason_lspconfig.utils.on_attach_keymap").on_attach
 
-
----@param nufnr number
+---@param bufnr number
 ---@return void
 local function highlight_symbol(bufnr)
     --Highlight references of the word under your cursor when your cursor rests there for a little while.
@@ -33,12 +31,29 @@ local function highlight_symbol(bufnr)
             {"LspDetach"},
             {
                 group = group,
-                callback = function(e)
+                callback = function(_)
                     lsp.buf.clear_references()
                     cl_aucmds{group = group, buffer = bufnr}
                 end
             }
     )
+end
+
+
+---@param  triggerChr string
+---@return boolean
+local function check_triggeredChr(triggerChr)
+    local cur_line = api.nvim_get_current_line()
+    local pos = api.nvim_win_get_cursor(0)[2]
+
+    local prev_char = cur_line:sub(pos - 1, pos - 1)
+    local cur_char = cur_line:sub(pos, pos)
+
+    for _, char in ipairs(triggerChr) do
+        if cur_char == char or prev_char == char then
+            return true
+        end
+    end
 end
 
 
@@ -56,34 +71,8 @@ local function is_method_supported(client, method, bufnr)
 end
 
 
----@param server string
----@param opts table
----@return void
-local function override_capabilities(server, capabilities, opts)
-        capabilities = capabilities or {}
-        local default_capabilities = lsp.protocol.make_client_capabilities()
-
-        if has("nvim-0.11") == 0 then
-            -- not tested !
-            require("lspconfig")[server].setup(opts)
-            require("lspconfig")[server].setup({
-                on_attach = on_attach,
-                capabilities = deep_extend("force", default_capabilities, capabilities),
-            })
-        else
-            lsp.config(server, opts)
-            lsp.config(server, {
-                on_attach = on_attach,
-                capabilities = deep_extend("force", default_capabilities, capabilities)
-            })
-        end
-
-    lsp.enable(server)
-end
-
-
 return {
     highlight_symbol = highlight_symbol,
+    check_triggeredChr = check_triggeredChr,
     is_method_supported = is_method_supported,
-    override_capabilities = override_capabilities,
 }

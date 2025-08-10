@@ -1,9 +1,10 @@
 {
   "blink.cmp": { "branch": "main", "commit": "33f0789297cfec5279c30c8f8980c035fdc91e34" },
   "dashboard-nvim": { "branch": "master", "commit": "c42fcfbd96dfcaa486c0a0ab52494316f1c31350" },
-  "dracula-pro.nvim": { "branch": "main", "commit": "adc9416a593ca042217b73a355a08b8635c5da65" },
+  "dracula-pro.nvim": { "branch": "main", "commit": "24663c6502925b0196173ff17460c62b44520ba3" },
   "git-dashboard-nvim": { "branch": "main", "commit": "c54fa2faf8ebe1c4091cc0c17c840835534943a6" },
   "gitsigns.nvim": { "branch": "main", "commit": "7010000889bfb6c26065e0b0f7f1e6aa9163edd9" },
+  "hlchunk.nvim": { "branch": "main", "commit": "474ec5d0f220158afa83aaefab32402e710d3032" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lualine-time": { "branch": "main", "commit": "8838875e2e787293bb905d23dbb91ef4bde188ea" },
   "lualine.nvim": { "branch": "master", "commit": "a94fc68960665e54408fe37dcf573193c4ce82c9" },

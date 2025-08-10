@@ -301,9 +301,14 @@ o.clipboard = "unnamed,unnamedplus"
 o.confirm = true  -- confirmation for unsaved changes
 ------------------------------------------------------------------------------------------------------------------------
 
+
+------------------------------------------------------------------------------------------------------------------------
+--- Indentation ---
+o.smarttab = true  -- combine with shiftwidth opt for 4-space tab
+------------------------------------------------------------------------------------------------------------------------
+
 o.fileignorecase = false  -- file to ignore when searching. Case-sensitive treating in *nix, and case-insensitive in Win
 o.undoreload = 10000
-
 
 
 o.fsync = true
@@ -389,7 +394,7 @@ o.showmatch = false
 o.showtabline = 1
 
 
-o.smarttab = true
+
 o.spellsuggest = "best"
 
 

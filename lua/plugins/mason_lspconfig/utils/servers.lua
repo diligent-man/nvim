@@ -27,6 +27,22 @@ local servers =
         default_cfg = "https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/lua_ls.lua",
         opts =
         {
+            filetypes = {"lua"},
+            root_markers = {
+                ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml",
+                "selene.toml", "selene.yml", ".luarc.json", ".git"
+            }
+        }
+    },
+
+    ["stylua"] = {
+        version = "v2.1.0",
+        doc = "https://roblox.github.io/lua-style-guide/",
+        default_cfg = nil,
+        install_method = "mason",
+        opts =
+        {
+            filetypes = {"lua"},
             root_markers = {
                 ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml",
                 "selene.toml", "selene.yml", ".luarc.json", ".git"

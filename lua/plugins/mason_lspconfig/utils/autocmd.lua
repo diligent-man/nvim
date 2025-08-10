@@ -14,7 +14,7 @@ cr_aucmd(
         {"LspAttach"},
         {
             desc = "Configureed functionalities on LSP Attach. For keymap, check on_attach_keymap.lua",
-            group = cr_augroup("lsp-attach", {clear = true}),
+            group = cr_augroup("LspAttach", {clear = true}),
             callback = function(e)
                 ---@type table
                 local client = lsp.get_client_by_id(e.data.client_id)
