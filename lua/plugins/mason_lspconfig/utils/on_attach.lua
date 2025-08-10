@@ -56,12 +56,6 @@ local on_attach = function(client, bufnr)
 
         {{"n"}, "gbk", lsp.buf.hover, {desc = "Hover info", buffer = bufnr}},
         {{"i"}, "<C-l>k", lsp.buf.hover, {desc = "Hover info", buffer = bufnr}},
-
-
-
-
-
-
     }
 
     for _, mapping in pairs(mappings) do
@@ -69,6 +63,7 @@ local on_attach = function(client, bufnr)
         keymap(modes, lhs, rhs, other, OPTS)
     end
 end
+
 
 return {
     on_attach = on_attach
