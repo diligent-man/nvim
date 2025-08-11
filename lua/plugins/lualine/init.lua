@@ -12,7 +12,7 @@ return {
     },
 
     config = function()
-        require('lualine').setup(
+        require("lualine").setup(
                 require("plugins.lualine.cosmic").config
         )
     end

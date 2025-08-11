@@ -41,6 +41,7 @@ return {
             {
                 -- normal case for pattern
                 {pattern = "buffer", icon = "", color="red"},
+                {pattern = "emoji", icon = "😀", color="yellow"},
                 {plugin = "nvim-tree.lua", pattern = "explorer", icon = "󰙅", color="yellow"},
             }
         }

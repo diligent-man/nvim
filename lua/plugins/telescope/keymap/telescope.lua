@@ -1,11 +1,3 @@
---[[
-There are 3 ways to configure/ override keymap in telescope buffer
-    + telescope.defaults.mappings (expert only)
-    + mappings field in telescope.setup() table or inside a given picker (e.g. find_files) (my choice)
-    + As a anonymous fn in "attach_mappings" of a specific picker
-
-We can deactivate a specific built-in keymap by setting it to false (as below) or actions.nop
-]]
 ---@type table
 local actions = require("telescope.actions")
 
@@ -123,7 +115,6 @@ local mappings = {
         ["<C-h>"] = actions.which_key
     }
 }
-
 
 return {
     mappings = mappings

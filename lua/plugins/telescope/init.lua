@@ -1,10 +1,5 @@
-require("plugins.telescope.keymap.nvim")
---require("plugins.telescope.")
---require("plugins.telescope.")
-
-
 ---@type table
-local telescope_setup = require("plugins.telescope.telescope")
+local setup = require("plugins.telescope.setup")
 
 
-return telescope_setup
+return setup

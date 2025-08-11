@@ -16,7 +16,7 @@ local default_setup = {
             selection_caret = " ",
 			multi_icon = " ▌",
 
-            initial_mode = "insert",
+            initial_mode = "normal",
             path_display = {"smart"},
 
             results_title = "Results",
