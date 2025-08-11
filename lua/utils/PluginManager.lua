@@ -139,6 +139,25 @@ function PluginManager:post_init()
     set_hl(0, "LspReferenceTarget", {reverse=true, italic=true}) -- effect on show Doc/ Def
 
     --------------------------------------------------------------------------------------------------------------------
+    --- Telescope ---
+    --- Ref: https://github.com/nvim-telescope/telescope.nvim/blob/b4da76be54691e854d3e0e02c36b0245f945c2c7/plugin/telescope.lua#L11
+    local has_telescope, _ = pcall(require, "telescope")
+    if has_telescope then
+        set_hl(0, "TelescopePromptBorder", {link = "DraculaRed"})
+        set_hl(0, "TelescopeResultsBorder", {link = "DraculaLightGreen"})
+        set_hl(0, "TelescopePreviewBorder", {link = "DraculaPink"})
+
+        set_hl(0, "TelescopeMatching", {link = "DraculaPink"})
+
+        set_hl(0, "TelescopePromptCounter", {fg = "#AFAF85"})
+        set_hl(0, "TelescopePromptPrefix", {link = "DraculaLightGreen"})
+
+        set_hl(0, "TelescopeSelectionCaret", {fg = "#FF0000"})
+
+        set_hl(0, "TelescopeSelection", {fg = "#FF0000"})
+        set_hl(0, "TelescopeMultiIcon", {fg = "DraculaPink"})
+    end
+    --------------------------------------------------------------------------------------------------------------------
     --- Which-keys ---
     local has_which_key = pcall(require, "which-key")
     if has_which_key then
