@@ -65,10 +65,16 @@ return {
                         key = "l"
                     },
                     {
-                        action = "q",
-                        desc = " Quit",
-                        icon = " ",
-                        key = "q"
+                        action = "!cd $PYCHARM && ./pycharm.sh &",
+                        icon = " ",
+                        desc = " Pycharm",
+                        key = "p"
+                    },
+                    {
+                        action = "silent !xdg-open https://www.youtube.com/",
+                        icon = " ",
+                        desc = " Youtube",
+                        key = "y"
                     },
                     {
                         action = "silent !xdg-open https://github.com/diligent-man",
@@ -76,21 +82,12 @@ return {
                         desc = " GitHub",
                         key = "g"
                     },
-
                     {
-                        action = "silent !xdg-open https://www.youtube.com/",
-                        icon = " ",
-                        desc = " Youtube",
-                        key = "y"
+                        action = "q",
+                        desc = " Quit",
+                        icon = " ",
+                        key = "q"
                     },
-
-                    {
-                        action = "!cd $PYCHARM && ./pycharm.sh &",
-                        icon = " ",
-                        desc = " Pycharm",
-                        key = "p"
-                    }
-
                     --{action = 'lua LazyVim.pick()()',                           desc = " Find File",       icon = " ", key = "f"},
                     --{action = 'lua LazyVim.pick("oldfiles")()',     desc = " Recent Files",       icon = " ", key = "r"},
                     --{action = 'lua LazyVim.pick("live_grep")()',    desc = " Find Text",          icon = " ", key = "g"},

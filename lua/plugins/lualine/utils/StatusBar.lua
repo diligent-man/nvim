@@ -35,7 +35,7 @@ local StatusBar = {
 
             inactive =
             {
-                c = {fg = colors.FG, bg = colors.BG},
+                c = {fg = colors.FG, bg = "#364946"},
             },
         },
 
@@ -99,9 +99,10 @@ local StatusBar = {
                         bg = get_m2c(),
                         gui = "bold,italic",
                     }
-                end,
-            },
+                end
+            }
         },
+
         lualine_x = {
             {
                 "location",

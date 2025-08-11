@@ -155,7 +155,7 @@ function PluginManager:post_init()
         set_hl(0, "TelescopeSelectionCaret", {fg = "#FF0000"})
 
         set_hl(0, "TelescopeSelection", {fg = "#FF0000"})
-        set_hl(0, "TelescopeMultiIcon", {fg = "DraculaPink"})
+        set_hl(0, "TelescopeMultiIcon", {link = "DraculaPink"})
     end
     --------------------------------------------------------------------------------------------------------------------
     --- Which-keys ---

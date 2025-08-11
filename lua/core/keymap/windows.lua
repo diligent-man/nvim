@@ -19,11 +19,11 @@ local OPTS = DEFAULT_KEYMAP_OPTS
 ---@type table
 local mappings = {
     --- Opening/ Closing ---
-    {{"n"}, "<leader>wv", ":vs<CR>", {desc = "Vsplit"}},  -- number allowed (split with specified row)
-    {{"n"}, "<leader>w<S-v>", ":vs", {desc = "Vsplit fnew"}},  -- Vsplit with entered new fname. Number allowed (//)
+    {{"n"}, "<leader>wvs", ":vs<CR>", {desc = "Vsplit"}},  -- number allowed (split with specified row)
+    {{"n"}, "<leader>wv<S-s>", ":vs", {desc = "Vsplit fnew"}},  -- Vsplit with entered new fname. Number allowed (//)
 
-    {{"n"}, "<leader>wh", ":sp<CR>", {desc = "Hsplit"}},  -- number allowed (split with specified col)
-    {{"n"}, "<leader>w<S-h>", ":sp", {desc = "Hsplit fnew"}},  -- Hsplit with entered new fname. Number allowed (//)
+    {{"n"}, "<leader>wsp", ":sp<CR>", {desc = "Hsplit"}},  -- number allowed (split with specified col)
+    {{"n"}, "<leader>ws<S-p>", ":sp", {desc = "Hsplit fnew"}},  -- Hsplit with entered new fname. Number allowed (//)
 
     {{"n"}, "<leader>wo", "<C-w>o", {desc = "Close all except current"}},  -- Hsplit with entered new fname
 
