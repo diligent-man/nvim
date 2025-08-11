@@ -8,4 +8,3 @@ _G["IS_LEADER_MAP"] = false
 
 require("utils.PluginManager")
 require("core")
-

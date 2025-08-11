@@ -1,3 +1,8 @@
+require("utils.alias")
+
+-- In conjunction with core/keymap/windows to completely disable built-in commands for <C-w>
+keymap("n", "<C-w>", "NOP")
+
 return {
     "folke/which-key.nvim",
 
@@ -8,6 +13,18 @@ return {
     event = "VeryLazy",
 
     opts = {
+        preset = "classic",
+        delay = 0,
+
+        plugins = {
+            presets = {
+                windows = false,
+                nav = true,
+                z = true,
+                g = true
+            }
+        },
+
         win =
         {
             wo = {

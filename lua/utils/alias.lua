@@ -26,6 +26,9 @@ buf_get_name = api.nvim_buf_get_name
 tabpage_list_wins = api.nvim_tabpage_list_wins
 
 set_hl = api.nvim_set_hl
+get_hl = api.nvim_get_hl
+
+vi_put = api.nvim_put
 ------------------------------------------------------------------------------------------------------------------------
 
 
@@ -43,6 +46,8 @@ stdpath = fn.stdpath
 
 mode = fn.mode
 has = fn.has
+
+setreg = fn.setreg
 ------------------------------------------------------------------------------------------------------------------------
 
 

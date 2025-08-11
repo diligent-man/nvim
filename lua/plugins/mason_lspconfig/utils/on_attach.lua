@@ -83,20 +83,22 @@ local on_attach = function(client, bufnr)
             group = cr_augroup("LspSignature", {clear = true}),
             buffer = bufnr,
             callback = function()
-                local triggerChars = client.server_capabilities.signatureHelpProvider.triggerCharacters
+                if client.server_capabilities.signatureHelpProvider then
+                    local triggerChars = client.server_capabilities.signatureHelpProvider.triggerCharacters
 
-                if check_triggeredChr(triggerChars) then
-                    lsp.buf.signature_help({
-                        focus = false,
-                        silent = true,
-                        max_height = 10,
-                        max_width = 80,
-                        offset_x = 0,
-                        offset_y = 0,
-                        border = "double",
-                        title = "abcasdasda",
-                        title_pos = "center"
-                    })
+                    if check_triggeredChr(triggerChars) then
+                        lsp.buf.signature_help({
+                            focus = false,
+                            silent = true,
+                            max_height = 10,
+                            max_width = 80,
+                            offset_x = 0,
+                            offset_y = 0,
+                            border = "double",
+                            title = "abcasdasda",
+                            title_pos = "center"
+                        })
+                    end
                 end
             end
         }

@@ -1,5 +1,6 @@
 require("core.keymap.common")
 require("core.keymap.windows")
+require("core.keymap.toggling")
 
 
 --[[

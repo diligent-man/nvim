@@ -1,7 +1,3 @@
-require("utils.alias")
-require("utils.constant")
-
-
 --[[
 Note:
     1/ Ctrl, Shift, Alt (Meta), Win (Super) are modifiers keymap that allows us to press other keys simultaneously.
@@ -12,6 +8,10 @@ Note:
     6/ Number allowed: Allow preceded number prior to keymap
     7/ Disabled keymaps were referenced from ":help windows"
 ]]
+
+require("utils.alias")
+require("utils.constant")
+
 
 ---@type table
 local OPTS = DEFAULT_KEYMAP_OPTS

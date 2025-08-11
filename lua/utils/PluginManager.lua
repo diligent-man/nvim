@@ -148,6 +148,9 @@ function PluginManager:post_init()
         wk.add({
             {"<leader>q", group = "Quit"},
             {"<leader>w", group = "Windows"},
+            {"<leader>p", group = "Session"},
+            {"<leader>t", group = "Toggle settings"},
+            {"<leader>f", group = "Telescope"},
 
             -- NvimTree
             {"<leader>e", group = "Explorer"},

@@ -1,6 +1,10 @@
 return {
     "shellRaining/hlchunk.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    verion = " v1.3.0",
+    pin = true,
+
+    event = {"BufReadPre", "BufNewFile"},
+
     config = function()
         require("hlchunk").setup({
             blank = {enable = false},
@@ -12,13 +16,13 @@ return {
                 use_treesitter = false,
 
                 style = {
-                    --vim.api.nvim_get_hl(0, {name = "DraculaRed"}),
-                    --vim.api.nvim_get_hl(0, {name = "DraculaYellow"}),
-                    --vim.api.nvim_get_hl(0, {name = "DraculaSkyBlue"}),
-                    --vim.api.nvim_get_hl(0, {name = "DraculaOrange"}),
-                    --vim.api.nvim_get_hl(0, {name = "DraculaLightGreen"}),
-                    --vim.api.nvim_get_hl(0, {name = "DraculaPurple"}),
-                    --vim.api.nvim_get_hl(0, {name = "DraculaCyan"}),
+                    -- get_hl(0, {name = "DraculaRed"}),
+                    -- get_hl(0, {name = "DraculaYellow"}),
+                    -- get_hl(0, {name = "DraculaSkyBlue"}),
+                    -- get_hl(0, {name = "DraculaOrange"}),
+                    -- get_hl(0, {name = "DraculaLightGreen"}),
+                    -- get_hl(0, {name = "DraculaPurple"}),
+                    -- get_hl(0, {name = "DraculaCyan"}),
 
                     vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui")
                 },
@@ -39,9 +43,13 @@ return {
                 },
             },
             chunk = {
+                delay = 100,
                 enable = true,
                 priority = 15,
+                duration = 200,
+                textobject = "",
                 style = "#61AFEF",
+                error_sign = true,
                 use_treesitter = true,
                 max_file_size = 1024 ^ 4,  -- 1TB
 
@@ -51,14 +59,7 @@ return {
                     left_top = "╭",
                     left_bottom = "╰",
                     right_arrow = ">",
-                },
-
-                textobject = "",
-
-                error_sign = true,
-
-                duration = 200,
-                delay = 100,
+                }
             }
         })
     end
