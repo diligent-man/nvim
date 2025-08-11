@@ -203,7 +203,8 @@ o.hlsearch = true  -- highlight all searched results
 
 -- Case insensitive ---
 o.ignorecase = false
-o.smartcase = false  --
+o.smartcase = false
+o.maxmempattern = 2000000
 ------------------------------------------------------------------------------------------------------------------------
 
 
@@ -336,7 +337,7 @@ o.makeef = ""
 o.matchtime = 5
 o.maxfuncdepth = 100
 o.maxmapdepth = 1000
-o.maxmempattern = 1000
+
 --o.msc = 999
 o.menuitems = 25
 o.messagesopt = "hit-enter,history:1000"
