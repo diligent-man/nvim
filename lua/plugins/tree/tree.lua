@@ -17,6 +17,16 @@ return {
         {
             on_attach = require("plugins.tree.keymap").on_attach,
 
+            hijack_cursor = true,
+
+            -- These for "nvim-telescope/telescope-project.nvim"
+            sync_root_with_cwd = true,
+            respect_buf_cwd = true,
+            update_focused_file = {
+                enable = true,
+                update_root = true
+            },
+
             view = {
                 width = 30,
                 relativenumber = false,
@@ -66,7 +76,7 @@ return {
 
             actions =
             {
-                change_dir = {restrict_above_cwd = true},
+                change_dir = {restrict_above_cwd = false},  -- due to "nvim-telescope/telescope-project.nvim"
                 expand_all = {exclude = {".git", "target", "build"}},
                 open_file = {window_picker = {chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"}}
             },

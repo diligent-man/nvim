@@ -3,42 +3,56 @@ require("utils.constant")
 
 
 ---@type table
+local utils = require("plugins.telescope.utils.utils")
+
+
+---@type table
 local builtin = require("telescope.builtin")
 
 ---@type table
 local live_multigrep = require("plugins.telescope.utils.multigrep").live_multigrep
 
+
+---@type function
+local find_nvim_cfg = utils.find_nvim_cfg
+
 ---@type table
 local OPTS = DEFAULT_KEYMAP_OPTS
 
 
-
 ---@type table
 local mappings = {
-    --- File pickers ---
+    --- File---
     {{"n"}, "<leader>ff", builtin.find_files, {desc = "Files"}},
-    {{"n"}, "<leader>flg", live_multigrep, {desc = "Live Multigrep"}},
+    {{"n"}, "<leader>fp", builtin.oldfiles, {desc = "Prev Files"}},
 
-    --- Vim pickers ---
-    {{"n"}, "<leader>fb", builtin.buffers, {desc = "Buffers"}},
-    {{"n"}, "<leader>fo", builtin.oldfiles, {desc = "Prev files"}},
-    {{"n"}, "<leader>fa", builtin.oldfiles, {desc = "Built-in functionalities"}},
-    {{"n"}, "<leader>fsh", builtin.search_history, {desc = "Search hist"}},
-    {{"n"}, "<leader>fht", builtin.help_tags, {desc = "Help Tags"}},
-    {{"n"}, "<leader>fvo", builtin.vim_options, {desc = "Vi Opts"}},
-    {{"n"}, "<leader>fcl", builtin.registers, {desc = "Clipboard"}},
-    {{"n"}, "<leader>fkm", builtin.keymaps, {desc = "Keymap"}},
-    {{"n"}, "<leader>fcb", builtin.current_buffer_fuzzy_find, {desc = "Cur Buf Find"}},
+    --- Buffers ---
+    {{"n"}, "<leader>fbl", builtin.buffers, {desc = "Buffers"}},
+    {{"n"}, "<leader>fbc", builtin.current_buffer_fuzzy_find, {desc = "Buf Content"}},
+
+    --- NVim ---
+    {{"n"}, "<leader>fvc", find_nvim_cfg, {desc = "Config"}},
+    {{"n"}, "<leader>fvo", builtin.vim_options, {desc = "Options"}},
 
     -- Git
     {{"n"}, "<leader>fgc", builtin.git_commits, {desc = "Git commits"}},
     {{"n"}, "<leader>fgb", builtin.git_bcommits, {desc = "Git buf commits"}},
     {{"n"}, "<leader>fgs", builtin.git_status, {desc = "Git status"}},
 
-    {{"n"}, "<M-1>", builtin.diagnostics, {desc = "Diagnostics"}},
-
-    -- Extension
+    --- Extensions ---
     {{"n"}, "<leader>fe", ":Telescope emoji<CR>", {desc = "Emoji"}},
+    {{"n"}, "<leader>fp", ":Telescope project<CR>", {desc = "Projects"}},
+
+    --- Help ---
+    {{"n"}, "<leader>fhk", builtin.keymaps, {desc = "Keymap"}},
+    {{"n"}, "<leader>fht", builtin.help_tags, {desc = "Tags"}},
+    {{"n"}, "<leader>fhc", builtin.commands, {desc = "Commands"}},
+
+    --- Others ---
+    {{"n"}, "<M-1>", builtin.diagnostics, {desc = "Diagnostics"}},  -- Pycharm habit :))
+    {{"n"}, "<leader>fr", builtin.registers, {desc = "Registers"}},
+    {{"n"}, "<leader>flg", live_multigrep, {desc = "Live Multigrep"}},
+    {{"n"}, "<leader>fsh", builtin.search_history, {desc = "Search hist"}},
 }
 
 for _, mapping in pairs(mappings) do

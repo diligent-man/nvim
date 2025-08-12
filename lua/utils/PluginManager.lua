@@ -181,6 +181,13 @@ function PluginManager:post_init()
 
             -- Buffer with Lsp capabilities
             {"gb", group = "Buffer"},
+
+            -- Telescope
+            {"<leader>fb", group = "Buffer"},
+            {"<leader>fr", group = "Register"},
+            {"<leader>fv", group = "Nvim"},
+            {"<leader>fh", group = "Help"},
+            {"<leader>fg", group = "Git"},
         })
         end
     --------------------------------------------------------------------------------------------------------------------

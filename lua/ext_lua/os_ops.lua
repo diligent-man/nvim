@@ -6,6 +6,7 @@ end
 
 ---@return string
 local function os_name()
+    -- Check vim.bo.fileformat options later
     return os_sep() == "\\" and "win" or "unix"
 end
 

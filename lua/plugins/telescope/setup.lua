@@ -57,18 +57,29 @@ return {
         local telescope = require("telescope")
 
         ---@type table
-        local state = require "telescope.actions.state"
-
+        local state = require("telescope.actions.state")
 
         ---@type table
         local project_actions = require("telescope._extensions.project.actions")
 
         ---@type table
-        local project_utils = require("telescope._extensions.project.utils")
+        local utils = require("plugins.telescope.utils.utils")
 
 
         ---@type table
         local mappings = require("plugins.telescope.keymap.telescope").mappings
+
+
+        ---@type function
+        local get_src_root = utils.get_src_root
+
+        ---@type function
+        local open_proj_in_new_tab = utils.open_proj_in_new_tab
+
+
+        ---@type table
+        --local project_utils = require("telescope._extensions.project.utils")
+
         ----------------------------------------------------------------------------------------------------------------
 
         ---@type table
@@ -77,7 +88,7 @@ return {
                 -- argument emoji is a table.
                 -- {name="", value="", cagegory="", description=""}
                 setreg("*", emoji.value)
-                vi_put({emoji.value}, 'c', false, true)
+                vi_put({emoji.value}, "c", false, true)
             end,
         }
 
@@ -92,53 +103,58 @@ return {
 
         ---@type
         local project = {
-            base_dirs = {
-                {path = "/home/trong/Downloads/Fast_Local/Source", max_depth = 99},
-            },
-            ignore_missing_dirs = true, -- default: false
-            hidden_files = true, -- default: false
-            --theme = "dropdown",
             order_by = "asc",
+            --theme = "dropdown",
             search_by = {"title", "path"},
+            hidden_files = true,
             sync_with_nvim_tree = true,
+            ignore_missing_dirs = true,
+
+            base_dirs = {
+                {path = get_src_root(), max_depth = 99},
+            },
 
             on_project_selected = function(prompt_bufnr)
-                local has_nvimtree, _ = pcall(require, "nvim-tree")
+                ---@type table
+                local picker = state.get_current_picker(prompt_bufnr)
 
-                ---@type string
-                local proj_path = state.get_selected_entry(prompt_bufnr).value
-
-                vicmd("tabnew")
-                project_utils.change_project_dir(proj_path)
-                if has_nvimtree then
-                    vicmd("NvimTreeFocus")
+                if #picker:get_multi_selection() > 0 then
+                    for _, entry in pairs(picker:get_multi_selection()) do
+                        open_proj_in_new_tab(entry.path, true)
+                    end
+                else
+                    ---@type string
+                    local proj_path = state.get_selected_entry(prompt_bufnr).value
+                    open_proj_in_new_tab(proj_path, true)
                 end
             end,
 
             mappings = {
                 n = {
-                    ['d'] = project_actions.delete_project,
-                    ['r'] = project_actions.rename_project,
-                    ['c'] = project_actions.add_project,
-                    ['C'] = project_actions.add_project_cwd,
-                    ['f'] = project_actions.find_project_files,
-                    ['b'] = project_actions.browse_project_files,
-                    ['s'] = project_actions.search_in_project_files,
-                    ['R'] = project_actions.recent_project_files,
-                    ['w'] = project_actions.change_working_directory,
-                    ['o'] = project_actions.next_cd_scope,
+                    ["c"] = false,
+                    ["d"] = false,
+                    ["r"] = false,
+                    ["C"] = false,
+                    ["f"] = false,
+                    ["w"] = false,
+                    ["o"] = false,
+
+                    ["<C-b>"] = project_actions.browse_project_files,  -- check telescope-file-browser.nvim for more info
+                    ["<C-r>"] = project_actions.recent_project_files,
+                    ["<C-s>"] = project_actions.search_in_project_files,  -- live grep
                 },
                 i = {
-                    ['<c-d>'] = project_actions.delete_project,
-                    ['<c-v>'] = project_actions.rename_project,
-                    ['<c-a>'] = project_actions.add_project,
-                    ['<c-A>'] = project_actions.add_project_cwd,
-                    ['<c-f>'] = project_actions.find_project_files,
-                    ['<c-b>'] = project_actions.browse_project_files,
-                    ['<c-s>'] = project_actions.search_in_project_files,
-                    ['<c-r>'] = project_actions.recent_project_files,
-                    ['<c-l>'] = project_actions.change_working_directory,
-                    ['<c-o>'] = project_actions.next_cd_scope,
+                    ["<c-d>"] = false,
+                    ["<c-v>"] = false,
+                    ["<c-a>"] = false,
+                    ["<c-A>"] = false,
+                    ["<c-f>"] = false,
+                    ["<c-l>"] = false,
+                    ["<c-o>"] = false,
+
+                    ["<C-b>"] = project_actions.browse_project_files,  -- check telescope-file-browser.nvim for more info
+                    ["<C-r>"] = project_actions.recent_project_files,
+                    ["<C-s>"] = project_actions.search_in_project_files,  -- live grep
                 }
             }
         }

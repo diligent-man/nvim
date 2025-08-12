@@ -40,8 +40,14 @@ return {
             rules =
             {
                 -- normal case for pattern
-                {pattern = "buffer", icon = "", color="red"},
+                {pattern = "buffer", icon = "", color="orange"},
                 {pattern = "emoji", icon = "😀", color="yellow"},
+                {pattern = "nvim", icon = "", color="green"},
+                {pattern = "help", icon = "󰋖", color="purple"},
+                {pattern = "command", icon = "</>", color="silver"},
+
+                {pattern = "register", icon = "📋", color="white"},
+                {pattern = "project", icon = "📚", color="lightred"},
                 {plugin = "nvim-tree.lua", pattern = "explorer", icon = "󰙅", color="yellow"},
             }
         }
