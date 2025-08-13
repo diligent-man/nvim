@@ -55,7 +55,6 @@ local cmd_mappings = {
 }
 
 
--- api.tree.change_root_to_parent
 ---@type table
 local api_mappings = {
     --- Dir traversing---
@@ -79,9 +78,9 @@ local api_mappings = {
     --- File opening
     {"n", "<CR>", api.node.open.edit, "Open"},
     {"n", "<Tab>", api.node.open.preview, "Preview"},
-    {"n", "<leader>wv", api.node.open.vertical, "Vsplit"},  -- overlap with core/keymap/windows which makes which-key cannot render desc
-    {"n", "<leader>wh", api.node.open.horizontal, "Hsplit"},  -- overlap with core/keymap/windows which makes which-key cannot render desc
-    {"n", "<leader>w<S-t>", api.node.open.tab, "Open in new tab"},  -- overlap with core/keymap/windows which makes which-key cannot render desc
+    {"n", "<leader>evs", api.node.open.vertical, "Vsplit"},     -- overlap with core/keymap/windows
+    {"n", "<leader>esp", api.node.open.horizontal, "Hsplit"},   -- overlap with core/keymap/windows
+    {"n", "<leader>et", api.node.open.tab, "Open in new tab"},  -- overlap with core/keymap/windows
     --{"n", "", api.node.open.edit, "Open"},
     -- {"n", "", api.node.open.replace_tree_buffer, "Open"},
     --{"n", "", api.node.open.no_window_picker, "Open: No Window Picker"},

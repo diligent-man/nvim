@@ -50,8 +50,8 @@ local mappings = {
 
 
     --- Moving ---
-    {{"n"}, "<leader>wr", "<C-w>r", {desc = "Rot right"}},  -- col effect
-    {{"n"}, "<leader>w<S-r>", "<C-w><S-r>", {desc = "Rot left"}},  -- col effect
+    {{"n"}, "<leader>w<M-r>", "<C-w>r", {desc = "Rot right"}},  -- col effect
+    {{"n"}, "<leader>w<M-S-r>", "<C-w><S-r>", {desc = "Rot left"}},  -- col effect
 
     -- Swap with Nth win (counting from 1). Col effect. Number allowed
     {{"n"}, "<leader>wx", "<C-w>x", {desc = "Win swap"}}, --
@@ -66,9 +66,9 @@ local mappings = {
 
 
     --- Resizing ---
-    {{"n"}, "<leader>we", "<C-w>=", {desc = "Eq wins"}},
-    {{"n"}, "<leader>wfh", "<C-w>_", {desc = "Full height win"}},
-    {{"n"}, "<leader>wfw", "<C-w>|", {desc = "Full width win"}},
+    {{"n"}, "<leader>wre", "<C-w>=", {desc = "Equal"}},
+    {{"n"}, "<leader>wr_", "<C-w>_", {desc = "Full height"}},
+    {{"n"}, "<leader>wr|", "<C-w>|", {desc = "Full width"}},
 
     -- Top origin (check moving direction later)
     {{"n"}, "<C-M-j>", "<C-w>-", {desc = "Dec height"}},

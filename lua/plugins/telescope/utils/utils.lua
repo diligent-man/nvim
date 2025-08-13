@@ -49,9 +49,10 @@ local function open_proj_in_new_tab(proj_path, focus_tree)
     focus_tree = focus_tree or true
 
     local has_nvim_tree, _ = pcall(require, "nvim-tree")
+    local project_utils = require("telescope._extensions.project.utils")
 
     vicmd("tabnew ")
-    require('telescope._extensions.project.utils').change_project_dir(proj_path)
+    project_utils.change_project_dir(proj_path)
 
     if has_nvim_tree and focus_tree then
         vicmd("NvimTreeFocus")

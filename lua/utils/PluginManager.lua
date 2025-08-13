@@ -165,16 +165,24 @@ function PluginManager:post_init()
         local wk = require("which-key")
 
         wk.add({
+
             {"<leader>q", group = "Quit"},
-            {"<leader>w", group = "Windows"},
             {"<leader>p", group = "Session"},
             {"<leader>t", group = "Toggle settings"},
             {"<leader>f", group = "Telescope"},
 
+            -- Windows --
+            {"<leader>w", group = "Windows"},
+            {"<leader>wr", group = "Resize"},
+            {"<leader>ws", group = "HSplit"},
+            {"<leader>wv", group = "VSplit"},
+
             -- NvimTree
             {"<leader>e", group = "Explorer"},
+            {"<leader>es", group = "HSplit Open"},
+            {"<leader>ev", group = "VSplit Open"},
             {"<leader>efb", group = "Bulky Ops"},
-            {"<leader>efn", group = "Fname copy"},
+            {"<leader>efn", group = "Filename ops"},
 
             -- Mason
             {"<leader>ma", group = "Mason"},
@@ -184,7 +192,9 @@ function PluginManager:post_init()
 
             -- Telescope
             {"<leader>fb", group = "Buffer"},
+            {"<leader>ff", group = "File"},
             {"<leader>fr", group = "Register"},
+            {"<leader>fs", group = "Search"},
             {"<leader>fv", group = "Nvim"},
             {"<leader>fh", group = "Help"},
             {"<leader>fg", group = "Git"},

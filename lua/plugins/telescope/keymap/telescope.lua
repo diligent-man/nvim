@@ -54,7 +54,7 @@ local mappings = {
 
         -- Misc
         ["<C-c>"] = actions.close,
-        ["<C-h>"] = actions.which_key,
+        ["<C-S-H>"] = actions.which_key,
     },
     n = {
         -- Keymap to deactivate
@@ -106,13 +106,13 @@ local mappings = {
 
         -- Selection
         ["<C-s>"] = actions.toggle_all,
-        ["<C-o>"] = actions.select_tab,
+        ["<C-t>"] = actions.select_tab,
         ["<C-v>s"] = actions.select_vertical,
         ["<C-s>p"] = actions.select_horizontal,
 
         -- Misc
         ["<C-c>"] = actions.close,
-        ["<C-h>"] = actions.which_key
+        ["<C-M-h>"] = actions.which_key
     }
 }
 

@@ -23,8 +23,9 @@ local OPTS = DEFAULT_KEYMAP_OPTS
 ---@type table
 local mappings = {
     --- File---
-    {{"n"}, "<leader>ff", builtin.find_files, {desc = "Files"}},
-    {{"n"}, "<leader>fp", builtin.oldfiles, {desc = "Prev Files"}},
+    {{"n"}, "<leader>ffb", builtin.oldfiles, {desc = "File Browser"}},
+    {{"n"}, "<leader>fff", builtin.find_files, {desc = "Find Files"}},
+    {{"n"}, "<leader>ffp", builtin.oldfiles, {desc = "Prev Files"}},
 
     --- Buffers ---
     {{"n"}, "<leader>fbl", builtin.buffers, {desc = "Buffers"}},
@@ -48,11 +49,14 @@ local mappings = {
     {{"n"}, "<leader>fht", builtin.help_tags, {desc = "Tags"}},
     {{"n"}, "<leader>fhc", builtin.commands, {desc = "Commands"}},
 
+    --- Search ---
+    {{"n"}, "<leader>fsh", builtin.search_history, {desc = "Search hist"}},
+
     --- Others ---
     {{"n"}, "<M-1>", builtin.diagnostics, {desc = "Diagnostics"}},  -- Pycharm habit :))
     {{"n"}, "<leader>fr", builtin.registers, {desc = "Registers"}},
     {{"n"}, "<leader>flg", live_multigrep, {desc = "Live Multigrep"}},
-    {{"n"}, "<leader>fsh", builtin.search_history, {desc = "Search hist"}},
+
 }
 
 for _, mapping in pairs(mappings) do
