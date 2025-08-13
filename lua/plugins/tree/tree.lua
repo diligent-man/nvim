@@ -18,7 +18,6 @@ return {
             on_attach = require("plugins.tree.keymap").on_attach,
 
             hijack_cursor = true,  -- keep caret at first chr
-            respect_buf_cwd = false,  -- automatically return cwd when close tree
 
             -- These for "nvim-telescope/telescope-project.nvim"
             sync_root_with_cwd = true,

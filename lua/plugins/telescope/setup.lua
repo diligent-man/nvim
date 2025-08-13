@@ -31,8 +31,8 @@ return {
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             commit = "1f08ed60cafc8f6168b72b80be2b2ea149813e55",
-            build = "make",
-            pin = true
+            pin = true,
+            build = "make"
         },
         {
             "xiyaowong/telescope-emoji.nvim",
@@ -59,10 +59,14 @@ return {
         local telescope = require("telescope")
 
         ---@type table
-        local state = require("telescope.actions.state")
+        local actions = require("telescope.actions")
 
         ---@type table
-        local fb_actions = require "telescope._extensions.file_browser.actions"
+        local state = require("telescope.actions.state")
+
+
+        ---@type table
+        local fb_actions = require("telescope._extensions.file_browser.actions")
 
         ---@type table
         local project_actions = require("telescope._extensions.project.actions")
@@ -235,7 +239,18 @@ return {
         telescope.setup({
             defaults = deep_extend("error", default_setup, {mappings = mappings}),
 
-            pickers = {},
+            pickers = {
+                buffers = {
+                    mappings = {
+                        n = {
+                            ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
+                        },
+                        i = {
+                            ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
+                        }
+                    }
+                }
+            },
 
             -- Full list at https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
             extensions = {

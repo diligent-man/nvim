@@ -36,7 +36,8 @@ local live_multigrep = function(opts)
                     "--with-filename",  -- according to vimgrep_arguments in doc
                     "--line-number",    -- according to vimgrep_arguments in doc
                     "--column",         -- according to vimgrep_arguments in doc
-                    "--smart-case"
+                    "--smart-case",
+                    "--trim"
                 },
             }
         end,

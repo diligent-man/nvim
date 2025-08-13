@@ -134,7 +134,7 @@ local api_mappings = {
     {"n", ".", api.node.run.system, "Run SysCmd"},  -- "e.g xdg-open in Linux, which runs default apps for selected extension"
     {"n", "<M-Enter>", api.node.show_info_popup, "Info"},
 
-    --{"n", "<2-LeftMouse>", api.node.open.edit, "Open"},
+    {"n", "<2-LeftMouse>", api.node.open.edit, "Open"},
     --{"n", "<2-RightMouse>", api.tree.change_root_to_node, "CD"},
 
     --{"n", "", api.tree.close, "Close"},

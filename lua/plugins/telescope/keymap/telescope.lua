@@ -28,19 +28,24 @@ local mappings = {
         -- Keymap to set
         -- Preview
         ["<c-p>"] = layout.toggle_preview,
-        ["<M-k>"] = actions.preview_scrolling_up,
-        ["<M-j>"] = actions.preview_scrolling_down,
-        --["<C-l>"] = actions.preview_scrolling_left,  -- telescope 0.2.0 (unavailable currently)
-        --["<C-h>"] = actions.preview_scrolling_right, -- telescope 0.2.0 (unavailable currently)
+
+        -- actions.preview_scrolling_left/ right are unavailable till v0.2.0
+        ["<M-j>"] = actions.cycle_previewers_next,
+        ["<M-k>"] = actions.cycle_previewers_prev,
+
+        ["<M-h>"] = actions.preview_scrolling_down,
+        ["<M-l>"] = actions.preview_scrolling_up,
 
         -- Result
-        ["<C-k>"] = actions.move_selection_previous,
+        -- actions.results_scrolling_left/ right are unavailable till v0.2.0
         ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
 
-        ["<C-M-k>"] = actions.results_scrolling_up,
-        ["<C-M-j>"] = actions.results_scrolling_down,
-        --["<M-h>"] = actions.results_scrolling_left,  -- same as actions.preview_scrolling_right/ left
-        --["<M-l>"] = actions.results_scrolling_right, -- same as actions.preview_scrolling_right/ left
+        ["<C-h>"] = actions.results_scrolling_down,
+        ["<C-l>"] = actions.results_scrolling_up,
+
+        ["<PageUp>"] = actions.results_scrolling_up,
+        ["<PageDown>"] = actions.results_scrolling_down,
 
         -- Cursor
         ["<C-Home>"] = actions.move_to_top,
@@ -54,7 +59,7 @@ local mappings = {
 
         -- Misc
         ["<C-c>"] = actions.close,
-        ["<C-S-H>"] = actions.which_key,
+        ["<C-M-h>"] = actions.which_key,
     },
     n = {
         -- Keymap to deactivate
@@ -83,22 +88,25 @@ local mappings = {
 
         -- Keymap to set
         -- Preview
-        ["<C-p>"] = layout.toggle_preview,
         ["<c-p>"] = layout.toggle_preview,
 
-        ["<M-k>"] = actions.preview_scrolling_up,
-        ["<M-j>"] = actions.preview_scrolling_down,
-        --["<C-l>"] = actions.preview_scrolling_left,  -- telescope 0.2.0 (unavailable currently)
-        --["<C-h>"] = actions.preview_scrolling_right, -- telescope 0.2.0 (unavailable currently)
+        -- actions.preview_scrolling_left/ right are unavailable till v0.2.0
+        ["<M-j>"] = actions.cycle_previewers_next,
+        ["<M-k>"] = actions.cycle_previewers_prev,
+
+        ["<M-h>"] = actions.preview_scrolling_down,
+        ["<M-l>"] = actions.preview_scrolling_up,
 
         -- Result
-        ["<C-k>"] = actions.move_selection_previous,
+        -- actions.results_scrolling_left/ right are unavailable till v0.2.0
         ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
 
-        ["<C-M-k>"] = actions.results_scrolling_up,
-        ["<C-M-j>"] = actions.results_scrolling_down,
-        --["<M-h>"] = actions.results_scrolling_left,  -- same as actions.preview_scrolling_right/ left
-        --["<M-l>"] = actions.results_scrolling_right, -- same as actions.preview_scrolling_right/ left
+        ["<C-h>"] = actions.results_scrolling_down,
+        ["<C-l>"] = actions.results_scrolling_up,
+
+        ["<PageUp>"] = actions.results_scrolling_up,
+        ["<PageDown>"] = actions.results_scrolling_down,
 
         -- Cursor
         ["<C-Home>"] = actions.move_to_top,

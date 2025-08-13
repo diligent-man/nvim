@@ -3,14 +3,17 @@ require("utils.constant")
 
 
 ---@type table
+local builtin = require("telescope.builtin")
+
+---@type table
 local utils = require("plugins.telescope.utils.utils")
 
 
 ---@type table
-local builtin = require("telescope.builtin")
+local live_multigrep = require("plugins.telescope.utils.multigrep").live_multigrep
 
 ---@type table
-local live_multigrep = require("plugins.telescope.utils.multigrep").live_multigrep
+local yaml_symbols = require("plugins.telescope.utils.find_yaml_node").yaml_symbols
 
 
 ---@type function
@@ -22,7 +25,7 @@ local OPTS = DEFAULT_KEYMAP_OPTS
 
 ---@type table
 local mappings = {
-    --- File---
+    --- Find File---
     {{"n"}, "<leader>ffb", builtin.oldfiles, {desc = "File Browser"}},
     {{"n"}, "<leader>fff", builtin.find_files, {desc = "Find Files"}},
     {{"n"}, "<leader>ffp", builtin.oldfiles, {desc = "Prev Files"}},
@@ -56,6 +59,7 @@ local mappings = {
     {{"n"}, "<M-1>", builtin.diagnostics, {desc = "Diagnostics"}},  -- Pycharm habit :))
     {{"n"}, "<leader>fr", builtin.registers, {desc = "Registers"}},
     {{"n"}, "<leader>flg", live_multigrep, {desc = "Live Multigrep"}},
+    {{"n"}, "<leader>fy", yaml_symbols, {desc = "Find yml node"}},
 
 }
 
