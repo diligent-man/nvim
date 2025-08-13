@@ -22,6 +22,7 @@ win_get_tabpage = api.nvim_win_get_tabpage
 get_current_win = api.nvim_get_current_win
 
 buf_get_name = api.nvim_buf_get_name
+buf_get_option = api.nvim_buf_get_option
 
 tabpage_list_wins = api.nvim_tabpage_list_wins
 
@@ -41,6 +42,7 @@ winheight = fn.winheight
 
 getbufinfo = fn.getbufinfo
 
+getcwd = fn.getcwd
 expand = fn.expand
 stdpath = fn.stdpath
 
@@ -48,6 +50,11 @@ mode = fn.mode
 has = fn.has
 
 setreg = fn.setreg
+reg_recording = fn.reg_recording
+
+fnamemodify = fn.fnamemodify
+
+index = fn.index
 ------------------------------------------------------------------------------------------------------------------------
 
 

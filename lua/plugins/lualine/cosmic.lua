@@ -139,20 +139,13 @@ local left_sections = deep_extend("error", {}, {
     create_separator("left", true),
     {
         function()
-            --print(get_curr_buf_fpath())
-            --print(vim.fn.fnamemodify(get_curr_buf_fpath(), ":t"))
-            --local icon, color = get_icon_color(vim.fn.fnamemodify(get_curr_buf_fpath(), ":t"))
-
-            --print(
-            --    i1, icon, color
-            --)
-            return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+            return fnamemodify(getcwd(), ':t')
         end,
 
         icon = '',
 
         color = function()
-            local virtual_env = vim.env.VIRTUAL_ENV
+            local virtual_env = vienv.VIRTUAL_ENV
 
             if virtual_env then
                 return {
@@ -216,13 +209,13 @@ local left_sections = deep_extend("error", {}, {
     {
         function()
             local msg = 'No Active Lsp'
-            local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-            local clients = vim.lsp.get_clients()
+            local buf_ft = buf_get_option(0, 'filetype')
+            local clients = lsp.get_clients()
             if next(clients) == nil then
                 return msg
             end
             local lsp_short_names = {
-                pyright = 'py',
+                pyright = 'pyr',
                 tsserver = 'ts',
                 rust_analyzer = 'rs',
                 lua_ls = 'lua',
@@ -238,16 +231,16 @@ local left_sections = deep_extend("error", {}, {
             }
             for _, client in ipairs(clients) do
                 local filetypes = client.config.filetypes
-                if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                if filetypes and index(filetypes, buf_ft) ~= -1 then
                     return lsp_short_names[client.name] or client.name:sub(1, 2)
                 end
             end
             return msg
         end,
-        icon = ' ',
+        icon = " ",
         color = {
             fg = colors.YELLOW,
-            gui = 'bold',
+            gui = "bold",
         },
         cond = partial(hide_in_width, 103)
     },
@@ -281,7 +274,7 @@ end
 local right_sections = deep_extend("error", {}, {
     {
     function()
-        local reg = vim.fn.reg_recording()
+        local reg = reg_recording()
         return reg ~= '' and '[' .. reg .. ']' or ''
     end,
 
@@ -291,7 +284,7 @@ local right_sections = deep_extend("error", {}, {
     },
 
     cond = function()
-        return vim.fn.reg_recording() ~= ''
+        return reg_recording() ~= ''
     end,
 },
     {

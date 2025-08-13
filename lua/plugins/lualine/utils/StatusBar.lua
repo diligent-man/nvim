@@ -1,3 +1,14 @@
+--[[
+According to lualine README.md, lualine statusline has layout as below, in which A-C & X-Z are sections to configure. To
+make code easy to follow, I use sections C on the LHS and X on the RHS as a reference system, and thus I just need two
+below helper methods (ins_left & ins_right) to configure.
+        +-------------------------------------------------+
+        | A | B | C                             X | Y | Z |
+        +-------------------------------------------------+
+]]
+---@type table
+local fn_ops = require("ext_lua.fn_ops")
+
 ---@type table
 local colors = require("plugins.lualine.utils.colors").colors
 
@@ -8,15 +19,9 @@ local utils = require("plugins.lualine.utils.utils")
 ---@type function
 local get_m2c = utils.get_m2c
 
+---@type function
+local partial = fn_ops.partial
 
---[[
-According to lualine README.md, lualine statusline has layout as below, in which A-C & X-Z are sections to configure. To
-make code easy to follow, I use sections C on the LHS and X on the RHS as a reference system, and thus I just need two
-below helper methods (ins_left & ins_right) to configure.
-        +-------------------------------------------------+
-        | A | B | C                             X | Y | Z |
-        +-------------------------------------------------+
-]]
 
 
 ---@class StatusBar
@@ -100,7 +105,7 @@ local StatusBar = {
                         gui = "bold,italic",
                     }
                 end
-            }
+            },
         },
 
         lualine_x = {
