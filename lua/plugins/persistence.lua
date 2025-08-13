@@ -1,5 +1,15 @@
+---@type StdPath
+local StdPath = require("utils.StdPath").StdPath
+
 ---@type table
 local persistence = require("persistence")
+
+---@type string
+local sep = require("ext_lua.os_ops").os_sep()
+
+
+---@type StdPath
+local std_path = StdPath.new()
 
 
 return {
@@ -10,7 +20,10 @@ return {
 
         event = "BufReadPre",
 
-        opts = {},
+        opts = {
+            dir = std_path.state ..  sep .. "sessions",
+            need = 0
+        },
 
         keys = {
             {"<leader>ps", function() persistence.load() end, desc = "Restore Session"},

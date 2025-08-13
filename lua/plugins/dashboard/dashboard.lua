@@ -59,6 +59,12 @@ return {
                         key = "s"
                     },
                     {
+                        action = "lua require('persistence').select()",
+                        desc = " Select sessions",
+                        icon = "💾",
+                        key = "S"
+                    },
+                    {
                         action = "Lazy",
                         desc = " Lazy",
                         icon = "󰒲 ",
