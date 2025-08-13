@@ -25,12 +25,12 @@ local diagnostic_cfg = {
             return "" -- Check later
         end,
 
-        format = function(diagnostic)
+        format = function(diag)
             local diagnostic_message = {
-                [vim.diagnostic.severity.ERROR] = diagnostic.message,
-                [vim.diagnostic.severity.WARN] = diagnostic.message,
-                [vim.diagnostic.severity.INFO] = diagnostic.message,
-                [vim.diagnostic.severity.HINT] = diagnostic.message,
+                [diagnostic.severity.ERROR] = diag.message,
+                [diagnostic.severity.WARN] = diag.message,
+                [diagnostic.severity.INFO] = diag.message,
+                [diagnostic.severity.HINT] = diag.message,
             }
             return diagnostic_message[diagnostic.severity]
         end

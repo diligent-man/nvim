@@ -157,6 +157,7 @@ function PluginManager:post_init()
         --set_hl(0, "TelescopeSelection", {fg = "#FF0000"})
         set_hl(0, "TelescopeMultiIcon", {link = "DraculaPink"})
     end
+
     --------------------------------------------------------------------------------------------------------------------
     --- Which-keys ---
     local has_which_key = pcall(require, "which-key")
@@ -165,7 +166,6 @@ function PluginManager:post_init()
         local wk = require("which-key")
 
         wk.add({
-
             {"<leader>q", group = "Quit"},
             {"<leader>p", group = "Session"},
             {"<leader>t", group = "Toggle settings"},
