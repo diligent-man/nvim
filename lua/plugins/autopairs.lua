@@ -5,7 +5,13 @@ return {
     pin = true,
 
     event = "InsertEnter",
-    config = true
-    -- use opts = {} for passing setup options
-    -- this is equivalent to setup({}) function
+
+    opts = {
+        fast_wrap = {},
+        disable_filetype = {},
+    },
+
+    config = function()
+        require("nvim-autopairs").setup({})
+    end
 }

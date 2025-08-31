@@ -15,3 +15,6 @@ DEFAULT_KEYMAP_OPTS = {noremap = true, silent = true}
 
 ---@type boolean
 WEEK_HEADER = false
+
+---@type number
+CMP_COLUMN_TYPE = 0

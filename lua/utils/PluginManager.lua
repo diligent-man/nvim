@@ -159,6 +159,15 @@ function PluginManager:post_init()
     end
 
     --------------------------------------------------------------------------------------------------------------------
+    --- Blink-cmp ---
+    local has_blink_cmp, _ = pcall(require, "blink.cmp")
+    if has_blink_cmp then
+        set_hl(0, "BlinkCmpMenuBorder", {fg = "#8AFF80"})
+        set_hl(0, "BlinkCmpDocBorder", {fg = "#9580FF"})
+        set_hl(0, "BlinkCmpItemIdx", {fg = "#02AEFF"})
+    end
+
+    --------------------------------------------------------------------------------------------------------------------
     --- Which-keys ---
     local has_which_key = pcall(require, "which-key")
     if has_which_key then

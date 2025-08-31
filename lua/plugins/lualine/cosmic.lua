@@ -379,7 +379,7 @@ right_sections = merge(right_sections, {
       ]]
     fmt = function(branch)
         if branch == "" or branch == nil then
-            return 'No Repo'
+            return "No Repo"
         end
 
         -- Function to truncate a segment to a specified length
