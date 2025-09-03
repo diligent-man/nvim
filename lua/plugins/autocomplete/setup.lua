@@ -1,7 +1,7 @@
-
 require("utils.alias")
 
-
+---@type table
+local keymap = require("plugins.autocomplete.keymap")
 
 
 return {
@@ -11,50 +11,16 @@ return {
     pin = true,
 
     lazy = false,
-    dependencies = {"echasnovski/mini.icons", version = "*"},
+    dependencies = {
+        "echasnovski/mini.icons",
+        'L3MON4D3/LuaSnip'
+    },
 
     config = function ()
         require("blink.cmp").setup({
-            keymap = {
-                preset = "none",
-                -- Navigation --
-                ["<Up>"] = {"select_prev", "fallback"},
-                ["<C-k>"] = {"select_prev", "fallback"},
-
-                ["<Down>"] = {"select_next", "fallback"},
-                ["<C-j>"] = {"select_next", "fallback"},
-
-                -- Selection --
-                ["<Tab>"] = {"accept", "fallback"},
-                ["<CR>"] = {"accept", "fallback"},
-
-                -- Others --
-                ["<C-e>"] = {"hide" or "canel", "fallback"},
-                ["<C-space>"] = {"show", "show_documentation", "hide_documentation"},
-
-                -- Quick select
-                ["<A-0>"] = {function(cmp) cmp.accept({index = 1}) end},
-                ["<A-1>"] = {function(cmp) cmp.accept({index = 2}) end},
-                ["<A-2>"] = {function(cmp) cmp.accept({index = 3}) end},
-                ["<A-3>"] = {function(cmp) cmp.accept({index = 4}) end},
-                ["<A-4>"] = {function(cmp) cmp.accept({index = 5}) end},
-                ["<A-5>"] = {function(cmp) cmp.accept({index = 6}) end},
-                ["<A-6>"] = {function(cmp) cmp.accept({index = 7}) end},
-                ["<A-7>"] = {function(cmp) cmp.accept({index = 8}) end},
-                ["<A-8>"] = {function(cmp) cmp.accept({index = 9}) end},
-                ["<A-9>"] = {function(cmp) cmp.accept({index = 10}) end},
-
-
-                --['<C-space>'] = {function(cmp)
-                --
-                --    for k, v in pairs(cmp) do
-                --        print(k,v)
-                --    end
-                --
-                --    cmp.show({providers = {"snippets"}})
-                --end
-            },
-            snippets = {preset = "default"},
+            keymap = keymap,
+            --snippets = {preset = "default"},
+            snippets = {preset = "luasnip"},
             completion = {
                 keyword = {range = "full"},
                 -- trigger = {},
@@ -79,7 +45,7 @@ return {
                                 width = { fill = false, max = 60 },
                             },
                             label_description = {
-                                width = { max = 50 },
+                                width = {max = 50},
                                 text = function(ctx)
                                     --[[
                                     Some data fields
@@ -99,7 +65,7 @@ return {
                                     end
                                 end,
                                 highlight = function(_)
-                                    return { { group = "DraculaComment" } }
+                                    return {{ group = "DraculaComment"}}
                                 end
                             },
                             kind = {
@@ -165,9 +131,11 @@ return {
                     force_version = "v1.6.0"
                 },
                 sorts = {
-                    "exact",
-                    "score",
-                    "sort_text",
+                    -- Style 1
+                    "kind", "label", "exact", "score", "sort_text",
+
+                    -- Style 2
+                    --"score", "sort_text", "kind", "label", "exact"
                 }
             },
 
