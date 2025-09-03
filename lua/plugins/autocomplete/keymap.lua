@@ -21,6 +21,9 @@ return {
     ["<Down>"] = {"select_next", "snippet_forward", "fallback"},
     ["<C-j>"] = {"select_next", "snippet_forward", "fallback"},
 
+    ["<A-k>"] = {"scroll_documentation_up", "fallback"},
+    ["<A-j>"] = {"scroll_documentation_down", "fallback"},
+
     -- Selection --
     ["<Tab>"] = {"accept", "fallback"},
     ["<CR>"] = {"accept", "fallback"},

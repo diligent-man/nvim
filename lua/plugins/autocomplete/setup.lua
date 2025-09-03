@@ -132,10 +132,10 @@ return {
                 },
                 sorts = {
                     -- Style 1
-                    "kind", "label", "exact", "score", "sort_text",
+                    "exact", "kind", "label", "score", "sort_text",
 
                     -- Style 2
-                    --"score", "sort_text", "kind", "label", "exact"
+                    --"exact", "score", "sort_text", "kind", "label"
                 }
             },
 
@@ -151,7 +151,7 @@ return {
                     if success and node and vim.tbl_contains(comment_signs, node:type()) then
                         return {"buffer"}
                     else
-                        return {"lsp", "path", "snippets", "buffer"}
+                        return {"snippets", "lsp", "path", "buffer"}
                     end
                 end,
 
