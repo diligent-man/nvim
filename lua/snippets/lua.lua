@@ -190,7 +190,7 @@ end]], {
 })
 ls.add_snippets(ft, {
     s({
-        trig = fn,
+        trig = "fn",
         desc = "Make function",
     },
             fmt(fn_template, {
