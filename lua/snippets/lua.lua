@@ -38,8 +38,7 @@ local sn = ls.snippet_node
 local ft = "lua"
 
 ---@type string
-local fn_template = [[
-{}
+local fn_template = [[{}
 local function {}({})
     {}
 end
@@ -62,7 +61,10 @@ local fn_snip = function(values)
                 nodes,
                 sn(
                         idx,
-                        fmt("---@param {} {}", { t(param), i(1, "dtype") })
+                        fmt(
+                                string.format("%s---@param {} {}", idx==1 and "\n" or "\n\n"),
+                                { t(param), i(1, "dtype")}
+                        )
                 )
         )
     end

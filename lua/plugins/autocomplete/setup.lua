@@ -33,7 +33,7 @@ return {
                 menu = {
                     max_height = 12,
                     scrolloff = 3,
-                    auto_show = true,
+                    auto_show = false,
                     scrollbar = false,
                     border = "rounded",
                     draw = {
