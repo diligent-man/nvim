@@ -1,11 +1,11 @@
 ---@param cmp table
 ---@param index number
 ---@return void
-local function accpet(cmp, index)
+local function accept(index, cmp)
     cmp.accept({index = index})
 end
 
 
 return {
-    accpet = accpet
+    accept = accept
 }

@@ -37,12 +37,12 @@ return {
                     scrollbar = false,
                     border = "rounded",
                     draw = {
-                        treesitter = { "lsp" },
+                        treesitter = {"lsp"},
                         align_to = "kind_icon",
                         columns = {{"item_idx"}, {"kind_icon"}, {"label", gap = 1, "label_description"}, {"source_name"}},
                         components = {
                             label = {
-                                width = { fill = false, max = 60 },
+                                width = {fill = false, max = 60},
                             },
                             label_description = {
                                 width = {max = 50},

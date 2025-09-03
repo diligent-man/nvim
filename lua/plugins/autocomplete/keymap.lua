@@ -22,8 +22,7 @@ return {
     ["<C-j>"] = {"select_next", "snippet_forward", "fallback"},
 
     -- Selection --
-    ["<Tab>"] = {"accept", "snippet_forward", "fallback"},
-    ["<S-Tab>"] = {"snippet_backward", "fallback"},
+    ["<Tab>"] = {"accept", "fallback"},
     ["<CR>"] = {"accept", "fallback"},
 
     -- Others --

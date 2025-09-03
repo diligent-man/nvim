@@ -1,3 +1,6 @@
+--[[
+Reference: https://www.youtube.com/playlist?list=PL0EgBggsoPCnZ3a6c0pZuQRMgS_Z8-Fnr
+]]
 require("utils.alias")
 
 
@@ -11,11 +14,11 @@ return {
     lazy = true,
 
     dependencies = {
-        "rafamadriz/friendly-snippets",
+        "diligent-man/friendly-snippets",
     },
 
     config = function()
-        require("plugins.luasnip.example_snippets")
+        --require("plugins.luasnip.example_snippets")
         require("plugins.luasnip.keymap")
 
         ---@type table

@@ -14,7 +14,10 @@ local snippet_path = table.concat({std_path.config, "lua", "snippets"}, os_sep()
 
 
 return {
-    "rafamadriz/friendly-snippets",
+    "diligent-man/friendly-snippets",
+
+    --version=
+    pin=true,
 
     config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
