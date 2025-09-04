@@ -11,6 +11,16 @@ local mappings = {
     {{"n", "v"}, "<leader>qq", ":q<CR>", {desc = "Quit"}},
     {{"n", "v"}, "<leader>qa", ":qa<CR>", {desc = "Quit all"}},
     {{"t"}, "<Esc>", "<C-\\><C-n>", {desc = "Exit term mode"}},
+
+    --- Line moving
+    {{"n"}, "<A-k>", ":m .-2<CR>==", {desc = "Move line up"}},
+    {{"n"}, "<A-j>", ":m +1<CR>==", {desc = "Move line down"}},
+
+    {{"i"}, "<A-k>", "<ESC>:m .-2<CR>==gi", {desc = "Move line up"}},
+    {{"i"}, "<A-j>", "<ESC>:m .+1<CR>==gi", {desc = "Move line down"}},
+
+    {{"v"}, "<A-k>", ":m '<-2<CR>gv=gv", {desc = "Move line up"}},
+    {{"v"}, "<A-j>", ":m '>+1<CR>gv=gv", {desc = "Move line down"}},
 }
 
 

@@ -313,6 +313,31 @@ In the past, plugin should be put into {package_path}/pack/{pack_name} but now i
 Most of plugins can be found in Vim Awesome
 ------------------------------------------------------------------------------------------------------------------------
 
+
+               Common scrolling w/o moving cursor in N mode
+    Shortcut            |           Meaning
+-----------------------------------------------------------------
+    Ctrl-y              |    Moves screen up one line
+    Ctrl-e              |    Moves screen down one line
+                        |
+    Ctrl-u              |    Moves cursor & screen up ½ page
+    Ctrl-d              |    Moves cursor & screen down ½ page
+                        |
+    Ctrl-b              |    Moves screen up one page, cursor to last line (overrident by nvimtree (set later))
+    Ctrl-f              |    Moves screen down one page, cursor to first line
+
+Some mnemonics for the keys are:
+    e[fter] (after in Swedish),
+    y[ore] (meaning the past, archaic),
+
+    u[p],
+    d[own],
+
+    b[ack],
+    f[orward]
+------------------------------------------------------------------------------------------------------------------------
+
+
                 Vim Motion
 {count}op{count}{motion}
 e.g
