@@ -1,3 +1,7 @@
+--[[
+    Although this script contains all local-to-buffer options, but all of them should be set
+globally via vim.o in lieu of vim.bo
+]]
 require("utils.alias")
 
 -- Finding regex: \s\s\slocal to buffer\s\s.
@@ -5,82 +9,86 @@ require("utils.alias")
 
 ---------------------------------------------------------------------------------------------------------------------------
 --- Scrolling ---
-bo.scrollback = 10000  -- max lines kept beyond the visible screen & deleted if new lines exceed this limit. Only terminal buffer
+o.scrollback = 10000  -- max lines kept beyond the visible screen & deleted if new lines exceed this limit. Only terminal buffer
 ------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------
 --- Indentation ---
-bo.tabstop = 4
-bo.shiftwidth = 4  -- Indent have width of 4
-bo.softtabstop = 0  -- # cols for a <Tab>. O for off feature
-bo.expandtab = true  -- convert <Tab> to <Space>
-bo.autoindent = true  -- copy indent from current to new line
-bo.smartindent = true  -- use softtabstop instead
+o.tabstop = 4
+o.shiftwidth = 4  -- Indent have width of 4
+o.softtabstop = -1  -- # cols for a <Tab>. O for off feature
+o.expandtab = true  -- convert <Tab> to <Space>
+o.autoindent = false  -- copy indent from current to new line (use smartindent instead)
+o.smartindent = true  -- use softtabstop instead
+
+o.indentexpr = ""
+o.indentkeys = "0{,0},0),0],:,0#,!^F,o,O,e"
+
+o.cindent = false
+o.cinkeys = "0{,0},0),0],:,0#,!^F,o,O,e"
 ---------------------------------------------------------------------------------------------------------------------------
 
 
 
-bo.binary = false
-bo.bomb = false
-bo.bufhidden = ""
-bo.buflisted = on
-bo.buftype = ""
+o.binary = false
+o.bomb = false
+o.bufhidden = ""
+o.buflisted = on
+o.buftype = ""
 --bo.busy = 0
 --bo.channel = 0
-bo.cindent = false
-bo.cinkeys = "0{,0},0),0],:,0#,!^F,o,O,e"
-bo.cinoptions = ""
-bo.cinscopedecls = "public,protected,private"
-bo.cinwords = "if,else,while,do,for,switch"
-bo.comments = "s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-,fb:•"
-bo.commentstring = ""
-bo.complete = ".,w,b,u,t"
-bo.completefunc = ""
-bo.completeslash = ""
-bo.copyindent = false
-bo.endoffile = false
-bo.endofline = true
 
-bo.fileencoding = ""
+o.cinoptions = ""
+o.cinscopedecls = "public,protected,private"
+o.cinwords = "if,else,while,do,for,switch"
+o.comments = "s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-,fb:•"
+o.commentstring = ""
+o.complete = ".,w,b,u,t"
+o.completefunc = ""
+o.completeslash = ""
+o.copyindent = false
+o.endoffile = false
+o.endofline = true
+
+o.fileencoding = ""
 --bo.fileformat  -- left as default
-bo.filetype = ""
-bo.fixendofline = true
-bo.formatexpr = ""
-bo.formatlistpat = "^\\s*\\d\\+[\\]:.)}\\t ]\\s*"
-bo.formatoptions = "tcqj"
-bo.iminsert = 0
-bo.imsearch = -1
-bo.includeexpr = ""
-bo.indentexpr = ""
-bo.indentkeys = "0{,0},0),0],:,0#,!^F,o,O,e"
-bo.infercase = false
-bo.iskeyword = "@,48-57,_,192-255"
-bo.keymap = ""
-bo.lisp = true
-bo.lispoptions = ""
-bo.matchpairs = "(:),{:},[:]"
+o.filetype = ""
+o.fixendofline = true
+o.formatexpr = ""
+o.formatlistpat = "^\\s*\\d\\+[\\]:.)}\\t ]\\s*"
+o.formatoptions = "tcqj"
+o.iminsert = 0
+o.imsearch = -1
+o.includeexpr = ""
+
+o.infercase = false
+o.iskeyword = "@,48-57,_,192-255"
+o.keymap = ""
+o.lisp = true
+o.lispoptions = ""
+o.matchpairs = "(:),{:},[:]"
 --bo.modeline -- left as default
-bo.modifiable = true
-bo.modified = false
-bo.nrformats = "bin,hex"
-bo.omnifunc = ""
-bo.preserveindent = false
-bo.quoteescape = "\\"
-bo.readonly = false
+o.modifiable = true
+o.modified = false
+o.nrformats = "bin,hex"
+o.omnifunc = ""
+o.preserveindent = false
+o.quoteescape = "\\"
+o.readonly = false
 
 
-bo.spellcapcheck = "[.?!]\\_[\\])'\"\\t ]\\+"
-bo.spellfile = ""
-bo.spelllang = "en"
-bo.spelloptions = ""
-bo.suffixesadd = ""
-bo.swapfile = true
-bo.synmaxcol = 3000
-bo.syntax = ""
+o.spellcapcheck = "[.?!]\\_[\\])'\"\\t ]\\+"
+o.spellfile = ""
+o.spelllang = "en"
+o.spelloptions = ""
+o.suffixesadd = ""
+o.swapfile = true
+o.synmaxcol = 3000
+o.syntax = ""
 
-bo.tagfunc = ""
-bo.textwidth = 0
-bo.undofile = false
-bo.varsofttabstop = ""
-bo.vartabstop = ""
-bo.wrapmargin = 0
+o.tagfunc = ""
+o.textwidth = 0
+o.undofile = false
+o.varsofttabstop = ""
+o.vartabstop = ""
+o.wrapmargin = 0

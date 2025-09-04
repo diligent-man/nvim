@@ -3,7 +3,7 @@
   "blink.cmp": { "branch": "main", "commit": "10f2ebe48849726608f79e21bc9eb89c567a22f3" },
   "dashboard-nvim": { "branch": "master", "commit": "c42fcfbd96dfcaa486c0a0ab52494316f1c31350" },
   "dracula-pro.nvim": { "branch": "main", "commit": "8a0151c254662f4d59b27e56c625b2acb1c56b76" },
-  "friendly-snippets": { "branch": "main", "commit": "c1cc70b0ff468d0c77689289a4fc1afc247e9927" },
+  "friendly-snippets": { "branch": "main", "commit": "37d08d6aa0db691766460eea694ad6a9b874559e" },
   "git-dashboard-nvim": { "branch": "main", "commit": "c54fa2faf8ebe1c4091cc0c17c840835534943a6" },
   "gitsigns.nvim": { "branch": "main", "commit": "7010000889bfb6c26065e0b0f7f1e6aa9163edd9" },
   "hlchunk.nvim": { "branch": "main", "commit": "474ec5d0f220158afa83aaefab32402e710d3032" },
