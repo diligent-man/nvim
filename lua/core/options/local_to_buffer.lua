@@ -1,11 +1,12 @@
 --[[
     Although this script contains all local-to-buffer options, but all of them should be set
 globally via vim.o in lieu of vim.bo
+
+Finding regex: \s\s\slocal to buffer\s\s.
+Use with Regular Expression Search in Chrome
 ]]
 require("utils.alias")
 
--- Finding regex: \s\s\slocal to buffer\s\s.
--- Use with Regular Expression Search in Chrome
 
 ---------------------------------------------------------------------------------------------------------------------------
 --- Scrolling ---
@@ -28,6 +29,14 @@ o.cindent = false
 o.cinkeys = "0{,0},0),0],:,0#,!^F,o,O,e"
 ---------------------------------------------------------------------------------------------------------------------------
 
+
+---------------------------------------------------------------------------------------------------------------------------
+--- Indentation ---
+o.spellcapcheck = "[.?!]\\_[\\])'\"\\t ]\\+"
+o.spellfile = ""
+o.spelllang = "en"
+o.spelloptions = ""
+---------------------------------------------------------------------------------------------------------------------------
 
 
 o.binary = false
@@ -76,11 +85,6 @@ o.preserveindent = false
 o.quoteescape = "\\"
 o.readonly = false
 
-
-o.spellcapcheck = "[.?!]\\_[\\])'\"\\t ]\\+"
-o.spellfile = ""
-o.spelllang = "en"
-o.spelloptions = ""
 o.suffixesadd = ""
 o.swapfile = true
 o.synmaxcol = 3000

@@ -46,6 +46,7 @@ wo.numberwidth = 6  -- same as pycharm
 
 ------------------------------------------------------------------------------------------------------------------------
 --- Misc ---
+wo.spell = true
 wo.fillchars = "eob: "
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -100,7 +101,7 @@ wo.rightleft = false
 
 
 wo.signcolumn = "auto"
-wo.spell = false
+
 wo.statuscolumn = ""
 wo.winblend = 0
 wo.winhighlight = ""
